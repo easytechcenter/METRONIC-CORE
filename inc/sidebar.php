@@ -25,7 +25,7 @@
                         </div>                                                                        
                     </li>
                     <li class="active">
-                        <a href="<?php echo $rootsite; ?>"><span class="fa fa-desktop"></span> <span class="xn-text">Accueil</span></a>                        
+                        <a href="<?php echo SITE_URL,RACINE; ?>"><span class="fa fa-desktop"></span> <span class="xn-text">Accueil</span></a>                        
                     </li>                    
                     <li class="xn-openable">
                         <a href="#">
