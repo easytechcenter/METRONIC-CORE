@@ -1,5 +1,7 @@
 <?php
 include('inc/config.php');
+$sql_version = mysql_query("SELECT * FROM maj ORDER BY version_latest DESC")or die(mysql_error());
+$donnee_version = mysql_fetch_array($sql_version);
 ?>
 
 <!DOCTYPE html>
@@ -98,23 +100,18 @@ include('inc/config.php');
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-6">
-                            <a href="#" class="btn btn-link btn-block">Forgot your password?</a>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-info btn-block">Log In</button>
+                        <div class="col-md-12">
+                            <button class="btn btn-info btn-block">Connexion</button>
                         </div>
                     </div>
                     </form>
                 </div>
                 <div class="login-footer">
                     <div class="pull-left">
-                        &copy; 2014 AppName
+                        &copy; 2014 <?php echo $logiciel; ?>
                     </div>
                     <div class="pull-right">
-                        <a href="#">About</a> |
-                        <a href="#">Privacy</a> |
-                        <a href="#">Contact Us</a>
+                        Version: <?php echo $donnee_version['version_latest']; ?>
                     </div>
                 </div>
             </div>
