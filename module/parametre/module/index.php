@@ -38,48 +38,74 @@ define("PAGE", "MODULE"); // Nom de la Page
                                 </div>
                                 <div class="panel-body">
                                     <div class="panel-group accordion">
+                                    <?php
+                                    $sql_cat_module = mysql_query("SELECT * FROM cat_module WHERE idcatmodule = '1'")or die(mysql_error());
+                                    while($cat_module = mysql_fetch_array($sql_cat_module))
+                                        {
+                                    ?>
                                         <div class="panel panel-primary">
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">
                                                     <a href="#accOneColOne">
-                                                        Collapsible Group Item #1
+                                                        <?php echo $cat_module['libelle_cat_module']; ?>
                                                     </a>
                                                 </h4>
                                             </div>                                
                                             <div class="panel-body panel-body-open" id="accOneColOne">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-striped table-actions">
+                                                        <thead>
+                                                            <tr>
+                                                                <th width="50">id</th>
+                                                                <th>name</th>
+                                                                <th width="100">status</th>
+                                                                <th width="100">amount</th>
+                                                                <th width="100">date</th>
+                                                                <th width="100">actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>                                            
+                                                            <tr id="trow_1">
+                                                                <td class="text-center">1</td>
+                                                                <td><strong>John Doe</strong></td>
+                                                                <td><span class="label label-success">New</span></td>
+                                                                <td>$430.20</td>
+                                                                <td>24/09/2014</td>
+                                                                <td>
+                                                                    <button class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></button>
+                                                                    <button onclick="delete_row('trow_1');" class="btn btn-danger btn-rounded btn-sm"><span class="fa fa-times"></span></button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="trow_2">
+                                                                <td class="text-center">2</td>
+                                                                <td><strong>Dmitry Ivaniuk</strong></td>
+                                                                <td><span class="label label-warning">Pending</span></td>
+                                                                <td>$1,351.00</td>
+                                                                <td>23/09/2014</td>
+                                                                <td>
+                                                                    <button class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></button>
+                                                                    <button onclick="delete_row('trow_2');" class="btn btn-danger btn-rounded btn-sm"><span class="fa fa-times"></span></button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="trow_3">
+                                                                <td class="text-center">3</td>
+                                                                <td><strong>Nadia Ali</strong></td>
+                                                                <td><span class="label label-info">In Queue</span></td>
+                                                                <td>$2,621.00</td>
+                                                                <td>22/09/2014</td>
+                                                                <td>
+                                                                    <button class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></button>
+                                                                    <button onclick="delete_row('trow_3');" class="btn btn-danger btn-rounded btn-sm"><span class="fa fa-times"></span></button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>                                
                                         </div>
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a href="#accOneColTwo">
-                                                        Collapsible Group Item #2
-                                                    </a>
-                                                </h4>
-                                            </div>                                
-                                            <div class="panel-body" id="accOneColTwo">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                            </div>                                
-                                        </div>
-                                        <div class="panel panel-warning">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a href="#accOneColThree">
-                                                        Collapsible Group Item #3
-                                                    </a>
-                                                </h4>
-                                            </div>                                
-                                            <div class="panel-body" id="accOneColThree">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                            </div>                                
-                                        </div>
+                                    <?php } ?>
                                     </div>
-                                </div>
-                                <div class="panel-footer">
-                                    <button class="btn btn-default">Back</button>
-                                    <button class="btn btn-primary pull-right">Submit</button>
-                                </div>                            
+                                </div>                           
                             </div>
 
                         </div>
@@ -125,10 +151,12 @@ define("PAGE", "MODULE"); // Nom de la Page
         <!-- END PLUGINS -->
 
         <!-- THIS PAGE PLUGINS -->
-
+        <script type='text/javascript' src='<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/icheck/icheck.min.js'></script>
+        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
         <!-- END PAGE PLUGINS -->         
 
         <!-- START TEMPLATE -->
+        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/settings.js"></script>
         <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/actions.js"></script>        
         <!-- END TEMPLATE -->
