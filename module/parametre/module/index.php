@@ -73,7 +73,7 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                                 <td>24/09/2014</td>
                                                                 <td>
                                                                     <button class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></button>
-                                                                    <button onclick="delete_row('trow_1');" class="btn btn-danger btn-rounded btn-sm"><span class="fa fa-times"></span></button>
+                                                                    <button class="btn btn-danger btn-rounded btn-sm" onClick="delete_row('trow_1');"><span class="fa fa-times"></span></button>
                                                                 </td>
                                                             </tr>
                                                             <tr id="trow_2">
@@ -84,7 +84,7 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                                 <td>23/09/2014</td>
                                                                 <td>
                                                                     <button class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></button>
-                                                                    <button onclick="delete_row('trow_2');" class="btn btn-danger btn-rounded btn-sm"><span class="fa fa-times"></span></button>
+                                                                    <button class="btn btn-danger btn-rounded btn-sm" onClick="delete_row('trow_2');"><span class="fa fa-times"></span></button>
                                                                 </td>
                                                             </tr>
                                                             <tr id="trow_3">
@@ -95,7 +95,7 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                                 <td>22/09/2014</td>
                                                                 <td>
                                                                     <button class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></button>
-                                                                    <button onclick="delete_row('trow_3');" class="btn btn-danger btn-rounded btn-sm"><span class="fa fa-times"></span></button>
+                                                                    <button class="btn btn-danger btn-rounded btn-sm" onClick="delete_row('trow_3');"><span class="fa fa-times"></span></button>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
