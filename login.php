@@ -101,7 +101,7 @@ $donnee_version = mysql_fetch_array($sql_version);
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <button class="btn btn-info btn-block">Connexion</button>
+                            <button class="btn btn-info btn-block" name="connexion" value="Connexion">Connexion</button>
                         </div>
                     </div>
                     </form>
