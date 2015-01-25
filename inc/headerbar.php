@@ -5,20 +5,13 @@
                         <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
                     </li>
                     <!-- END TOGGLE NAVIGATION -->
-                    <!-- SEARCH -->
-                    <li class="xn-search">
-                        <form role="form">
-                            <input type="text" name="search" placeholder="Search..."/>
-                        </form>
-                    </li>   
-                    <!-- END SEARCH -->
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->
                     <!-- MESSAGES -->
-                    <li class="xn-icon-button pull-right">
+                    <!-- <li class="xn-icon-button pull-right">
                         <a href="#"><span class="fa fa-comments"></span></a>
                         <div class="informer informer-danger">4</div>
                         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
@@ -58,10 +51,10 @@
                                 <a href="pages-messages.html">Show all messages</a>
                             </div>                            
                         </div>                        
-                    </li>
+                    </li> -->
                     <!-- END MESSAGES -->
                     <!-- TASKS -->
-                    <li class="xn-icon-button pull-right">
+                    <!-- <li class="xn-icon-button pull-right">
                         <a href="#"><span class="fa fa-tasks"></span></a>
                         <div class="informer informer-warning">3</div>
                         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
@@ -105,7 +98,7 @@
                                 <a href="pages-tasks.html">Show all tasks</a>
                             </div>                            
                         </div>                        
-                    </li>
+                    </li> -->
                     <!-- END TASKS -->
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->
