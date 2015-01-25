@@ -1,4 +1,4 @@
-<!-- START PAGE SIDEBAR -->
+    <!-- START PAGE SIDEBAR -->
             <div class="page-sidebar">
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">

@@ -1,11 +1,18 @@
 <?php
+session_start();
+if (!isset($_SESSION['login'])) {
+header ('Location: http://vps116895.ovh.net/metronic/login.php');
+exit();
+}
 include ('config.php');
+$result = mysql_query("SELECT iduser, email, nom_user, prenom_user FROM utilisateur WHERE email = '".$_SESSION['login']. "'") or die(mysql_error());
+$donnees_login = mysql_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>        
         <!-- META SECTION -->
-        <title>METRONIC CORE V5 - SYSTEME</title>            
+        <title><?php echo $logiciel; ?></title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

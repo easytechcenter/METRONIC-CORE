@@ -1,6 +1,6 @@
 <?php
 include ('inc/header.php');
-$page = "ACCEUIl";
+$page = "ACCEUIL";
 ?>
     <body>
         <!-- START PAGE CONTAINER -->
