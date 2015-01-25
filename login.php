@@ -1,3 +1,7 @@
+<?php
+include('inc/config.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="body-full-height">
     <head>        
@@ -20,9 +24,6 @@
         
             <div class="login-box animated fadeInDown">
                 <div class="login-logo"></div>
-                <?php
-                include('inc/config.php');
-                ?>
                 <?php
                 // on teste si le visiteur a soumis le formulaire de connexion
                 date_default_timezone_set("UTC");
