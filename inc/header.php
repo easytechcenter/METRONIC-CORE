@@ -5,7 +5,7 @@ header ('Location: http://vps116895.ovh.net/metronic/login.php');
 exit();
 }
 include ('config.php');
-$result = mysql_query("SELECT iduser, email, nom_user, prenom_user FROM utilisateur WHERE email = '".$_SESSION['login']. "'") or die(mysql_error());
+$result = mysql_query("SELECT iduser, login, nom_user, prenom_user FROM utilisateur WHERE login = '".$_SESSION['login']. "'") or die(mysql_error());
 $donnees_login = mysql_fetch_array($result);
 ?>
 <!DOCTYPE html>
