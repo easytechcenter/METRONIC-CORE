@@ -84,7 +84,7 @@ include('inc/config.php');
                 }
                 ?>
                 <div class="login-body">
-                    <div class="login-title"><strong>Bienvenue</strong>, connexion à l'interface METRONIC</div>
+                    <div class="login-title"><strong>Bienvenue</strong>, connexion à l'interface <?php echo $logiciel; ?></div>
                     <form action="login.php" class="form-horizontal" method="post">
                     <div class="form-group">
                         <div class="col-md-12">
