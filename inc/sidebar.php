@@ -3,7 +3,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="<?php echo $rootsite; ?>">METRONIC-CORE V5</a>
+                        <a href="<?php echo SITE_URL ASSETS; ?>"><?php echo LOGICIEL; ?></a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">

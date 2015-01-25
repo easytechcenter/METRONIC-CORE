@@ -9,7 +9,10 @@ mysql_connect($host, $user, $pass)or die(mysql_error());
 mysql_select_db($base);
 
 
-$rootsite = "http://vps116895.ovh.net/metronic/";
+define("SITE_URL", "http://vps116895.ovh.net/");
+define("RACINE", "metronic/");
+define("ASSETS", "assets/");
+define("LOGICIEL", "METRONIC-CORE V5");
 
 $logiciel = "METRONIC-CORE V5";
 ?>
