@@ -1,7 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['login'])) {
-header ('Location: http://vps116895.ovh.net/metronic/login.php');
+?>
+<script type="text/javascript">
+    window.location.href="<?php echo SITE_URL,RACINE; ?>"
+</script>
+<?php
 exit();
 }
 include ('config.php');
@@ -21,6 +25,6 @@ $donnees_login = mysql_fetch_array($result);
         <!-- END META SECTION -->
         
         <!-- CSS INCLUDE -->        
-        <link rel="stylesheet" type="text/css" id="theme" href="<?php echo $rootsite; ?>/assets/css/theme-default.css"/>
+        <link rel="stylesheet" type="text/css" id="theme" href="<?php echo SITE_URL,ASSETS; ?>/css/theme-default.css"/>
         <!-- EOF CSS INCLUDE -->                                    
     </head>
