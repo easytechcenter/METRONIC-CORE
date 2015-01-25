@@ -8,11 +8,11 @@
                     </li>
                     <li class="xn-profile">
                         <a href="#" class="profile-mini">
-                            <img src="<?php echo $rootsite; ?>/assets/img/user/<?php echo $donnees_login['login']; ?>.png" alt="John Doe"/>
+                            <img src="<?php echo SITE_URL,ASSETS; ?>img/user/<?php echo $donnees_login['login']; ?>.png" alt="John Doe"/>
                         </a>
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="<?php echo $rootsite; ?>/assets/img/user/<?php echo $donnees_login['login']; ?>.png" alt="John Doe"/>
+                                <img src="<?php echo SITE_URL,ASSETS; ?>img/user/<?php echo $donnees_login['login']; ?>.png" alt="John Doe"/>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name"><?php echo $donnees_login['nom_user']; ?> <?php echo $donnees_login['prenom_user']; ?></div>
@@ -34,22 +34,22 @@
                         </a>
                         <ul>
                              <li>
-                                <a href="<?php echo $rootsite; ?>module/parametre/societe/">
+                                <a href="<?php echo SITE_URL,RACINE; ?>module/parametre/societe/">
                                     <span class="fa fa-building-o"></span> Gestion de la société
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo $rootsite; ?>module/parametre/user/">
+                                <a href="<?php echo SITE_URL,RACINE; ?>module/parametre/user/">
                                     <span class="fa fa-users"></span> Gestion des Utilisateurs
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo $rootsite; ?>module/parametre/update/">
+                                <a href="<?php echo SITE_URL,RACINE; ?>module/parametre/update/">
                                     <span class="fa fa-download"></span> Mise à jour
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo $rootsite; ?>module/parametre/module/">
+                                <a href="<?php echo SITE_URL,RACINE; ?>module/parametre/module/">
                                     <span class="glyphicon glyphicon-th"></span> Gestion des modules
                                 </a>
                             </li>
