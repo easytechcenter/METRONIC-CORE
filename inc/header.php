@@ -1,5 +1,6 @@
 <?php
 session_start();
+include ('config.php');
 if (!isset($_SESSION['login'])) {
 header("Location:".SITE_URL."".RACINE."login.php");
 exit();
