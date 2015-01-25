@@ -3,16 +3,16 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="<?php echo SITE_URL,ASSETS; ?>"><?php echo LOGICIEL; ?></a>
+                        <a href="<?php echo SITE_URL,RACINE,ASSETS; ?>"><?php echo LOGICIEL; ?></a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">
                         <a href="#" class="profile-mini">
-                            <img src="<?php echo SITE_URL,ASSETS; ?>img/user/<?php echo $donnees_login['login']; ?>.png" alt="John Doe"/>
+                            <img src="<?php echo SITE_URL,RACINE,ASSETS; ?>img/user/<?php echo $donnees_login['login']; ?>.png" alt="John Doe"/>
                         </a>
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="<?php echo SITE_URL,ASSETS; ?>img/user/<?php echo $donnees_login['login']; ?>.png" alt="John Doe"/>
+                                <img src="<?php echo SITE_URL,RACINE,ASSETS; ?>img/user/<?php echo $donnees_login['login']; ?>.png" alt="John Doe"/>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name"><?php echo $donnees_login['nom_user']; ?> <?php echo $donnees_login['prenom_user']; ?></div>
