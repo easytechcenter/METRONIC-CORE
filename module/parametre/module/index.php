@@ -56,8 +56,8 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                     <table class="table table-bordered table-striped table-actions">
                                                         <thead>
                                                             <tr>
-                                                                <th width="50">id</th>
-                                                                <th>name</th>
+                                                                <th width="50">Référence</th>
+                                                                <th>Information Module</th>
                                                                 <th width="100">status</th>
                                                                 <th width="100">amount</th>
                                                                 <th width="100">date</th>

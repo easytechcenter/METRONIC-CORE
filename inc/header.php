@@ -1,11 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['login'])) {
-?>
-<script type="text/javascript">
-    window.location.href="<?php echo SITE_URL,RACINE; ?>"
-</script>
-<?php
+header("Location:".SITE_URL."".RACINE."login.php");
 exit();
 }
 include ('config.php');
