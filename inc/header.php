@@ -5,7 +5,6 @@ if (!isset($_SESSION['login'])) {
 header("Location:".SITE_URL."".RACINE."login.php");
 exit();
 }
-include ('config.php');
 $result = mysql_query("SELECT iduser,login,nom_user,prenom_user, poste FROM utilisateur WHERE login = '".$_SESSION['login']. "'") or die(mysql_error());
 $donnees_login = mysql_fetch_array($result);
 ?>
