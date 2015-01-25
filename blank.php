@@ -1,5 +1,6 @@
 <?php
 include ('inc/header.php'); 
+define("PAGE", ""); // Nom de la Page
 ?>
     <body>
         <!-- START PAGE CONTAINER -->
@@ -11,19 +12,13 @@ include ('inc/header.php');
             <div class="page-content">
                 
                 <!-- START X-NAVIGATION VERTICAL -->
-                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-                    <!-- TOGGLE NAVIGATION -->
-                    <li class="xn-icon-button">
-                        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
-                    </li>
-                    <!-- END TOGGLE NAVIGATION -->                    
-                </ul>
+                <?php include ('inc/headerbar.php'); ?>
                 <!-- END X-NAVIGATION VERTICAL -->                     
                 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Link</a></li>                    
-                    <li class="active">Active</li>
+                    <li class="active"><?php echo PAGE; ?></li>
                 </ul>
                 <!-- END BREADCRUMB -->                
                 
