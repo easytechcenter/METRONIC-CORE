@@ -25,6 +25,6 @@ $donnees_login = mysql_fetch_array($result);
         <!-- END META SECTION -->
         
         <!-- CSS INCLUDE -->        
-        <link rel="stylesheet" type="text/css" id="theme" href="<?php echo SITE_URL,ASSETS; ?>/css/theme-default.css"/>
+        <link rel="stylesheet" type="text/css" id="theme" href="<?php echo SITE_URL,RACINE,ASSETS; ?>/css/theme-default.css"/>
         <!-- EOF CSS INCLUDE -->                                    
     </head>
