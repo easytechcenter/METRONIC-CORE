@@ -38,7 +38,7 @@ $page = "ACCEUIL";
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="pages-login.html" class="btn btn-success btn-lg">Oui</a>
+                            <a href="<?php echo SITE_URL,RACINE; ?>logout.php" class="btn btn-success btn-lg">Oui</a>
                             <button class="btn btn-default btn-lg mb-control-close">Non</button>
                         </div>
                     </div>
