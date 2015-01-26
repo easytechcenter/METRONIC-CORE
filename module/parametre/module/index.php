@@ -84,7 +84,17 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                                     <span class="label label-success"><?php echo $donnee_module['version_module']; ?></span>
                                                                     <?php } ?>
                                                                 </td>
-                                                                <td>$430.20</td>  
+                                                                <td>
+                                                                    <div class="btn-group">
+                                                                        <button type="button" class="btn-info"><i class="fa fa-eye"></i></button>
+                                                                        <a class="btn btn-info" href="">Voir Les Information du Module</a>
+                                                                    </div>
+                                                                    <?php
+                                                                    if($donnee_module['version_module'] != $version_serveur){
+                                                                    ?>
+                                                                    <a class="btn btn-danger btn-xs" href="">Update</a>
+                                                                    <?php } ?>
+                                                                </td>  
                                                             </tr>
                                                         <?php } ?>
                                                         </tbody>
