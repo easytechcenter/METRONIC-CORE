@@ -30,17 +30,24 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                 <div class="page-content-wrap">
                 
                     <div class="row">
-                        <div class="col-md-12">
-
+                        <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Panel Title</h3>
+                                    <h3 class="panel-title">Information Général</h3>
                                 </div>
                                 <div class="panel-body">
-                                    Panel body
+                                    <form role="form" action="index.php" method="POST">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="input-group input-group-lg">                                            
+                                                    <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                                                    <input type="text" placeholder="Large" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 
