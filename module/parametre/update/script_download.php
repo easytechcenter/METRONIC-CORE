@@ -61,7 +61,35 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                         $dir_file_sql = exec("cd /var/www/".RACINE."/temp");
                         $maj_sql = exec("mysql -u root -p1992maxime metronic < maj.sql");
 
-                        $maj = copy("../../../temp/".$version_latest."", "../../../../metronic");
+                        //fONCTION DE COPIE DE FICHIER
+                        function CopyDir($origine, $destination) {
+                            $test = scandir($origine);
+
+                            $file = 0;
+                            $file_tot = 0;
+
+                            foreach($test as $val) {
+                                if($val!="." && $val!="..") {
+                                    if(is_dir($origine."/".$val)) {
+                                        CopyDir($origine."/".$val, $destination."/".$val);
+                                        IsDir_or_CreateIt($destination."/".$val);
+                                    } else {
+                                        $file_tot++;
+                                        if(copy($origine."/".$val, $destination."/".$val)) {
+                                            $file++;
+                                        } else {
+                                            if(!file_exists($origine."/".$val)) {
+                                                echo $origine."/".$val;
+                                            };
+                                        };
+                                    };
+                                };
+                            }
+                            return true;
+                        }
+                        $origine = "/chemin/vers/source/";
+                        $destination = "/chemin/vers/destination/";
+                        $maj = CopyDir($origine, $destination);
 
 
                         ?>
