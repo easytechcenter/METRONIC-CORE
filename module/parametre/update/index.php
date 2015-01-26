@@ -51,7 +51,7 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                                     	<p><?php echo $select_metronic['desc_maj']; ?></p>
                                     </div>
                                     <div class="col-md-3">
-                                    	<a href="" class="btn btn-success btn-lg"><i class="fa fa-download"></i> Télécharger la Mise à jour<br><h6><?php echo $select_metronic['version_previous']; ?> vers <?php echo $select_metronic['version_latest']; ?></h6></a>
+                                    	<a href="script_download.php?version_latest=<?php echo $select_metronic['version_latest']; ?>" class="btn btn-success btn-lg"><i class="fa fa-download"></i> Télécharger la Mise à jour<br><h6><?php echo $select_metronic['version_previous']; ?> vers <?php echo $select_metronic['version_latest']; ?></h6></a>
                                     </div>
                                 </div>
                             </div>
