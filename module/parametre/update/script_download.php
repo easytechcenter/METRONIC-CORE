@@ -126,7 +126,7 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                                                 <td>Mise à jour de la BDD</td>
                                                 <td>
                                                     <?php
-                                                    if($sql_maj == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de mettre à jour la base de donnée'>Erreur</span>";}
+                                                    if($maj_sql == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de mettre à jour la base de donnée'>Erreur</span>";}
                                                     ?>
                                                 </td>
                                             </tr>
