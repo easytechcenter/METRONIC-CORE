@@ -56,7 +56,6 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
 
                         $ouverture_zip = $zip->open('../../../temp/'.$version_latest.'.zip');
                         $extraction = $zip->extractTo('../../../temp/'.$version_latest.'');
-                        $zip->close();
 
                         //Mise à jour de l'instruction SQL
                         $sql_file = file_get_contents("../../../temp".$version_latest."/maj.sql");
