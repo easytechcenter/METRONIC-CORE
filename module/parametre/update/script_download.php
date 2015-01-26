@@ -58,13 +58,10 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                         $extraction = $zip->extractTo('../../../temp/');
 
                         //Mise à jour de l'instruction SQL
-                        $sql_file = file_get_contents("../../../temp/".$version_latest."/maj.sql");
-                        $plit_sql = explode("\n", $requetes);
-                        foreach ($plit_sql as $req){
-                            $sql_maj = mysql_query($req);
-                        }
+                        $dir_file_sql = exec("cd /var/www/".RACINE."/temp");
+                        $maj_sql = exec("mysql -u root -p1992maxime metronic < maj.sql");
 
-                        $maj = copy('../../../temp/'.$version_latest.'/', '../../../../metronic/');
+                        $maj = copy('../../../temp/'.$version_latest.'', '../../../../metronic/');
 
 
                         ?>
@@ -121,7 +118,7 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                                                 <td>Fichier SQL</td>
                                                 <td>
                                                     <?php
-                                                    if($sql_file == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de trouvez le fichier sql de mise à jour'>Erreur</span>";}
+                                                    if($dir_file_sql == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de trouvez le fichier sql de mise à jour'>Erreur</span>";}
                                                     ?>
                                                 </td>
                                             </tr>
