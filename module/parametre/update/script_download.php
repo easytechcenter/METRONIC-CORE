@@ -58,13 +58,13 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                         $extraction = $zip->extractTo('../../../temp/');
 
                         //Mise à jour de l'instruction SQL
-                        $sql_file = file_get_contents("../../../temp".$version_latest."/maj.sql");
-                        $plit_sql = explode("\n");
+                        $sql_file = file_get_contents("../../../temp/".$version_latest."/maj.sql");
+                        $plit_sql = explode("\n", $requetes);
                         foreach ($plit_sql as $req){
                             $sql_maj = mysql_query($req);
                         }
 
-                        $maj = copy('../../../temp/'.$version_latest.'', '../../../../metronic/');
+                        $maj = copy('../../../temp/'.$version_latest.'/', '../../../../metronic/');
 
 
                         ?>
