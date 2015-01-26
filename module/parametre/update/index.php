@@ -53,7 +53,7 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                         	<div class="panel panel-default">
                                 <div class="panel-body">
                                     <div style="text-align: center;"><i class="fa fa-download fa-5x"></i></div>
-                                    <h1>Aucune Mise à jour Disponible</h1>
+                                    <h1 style="text-align: center;">Aucune Mise à jour Disponible</h1>
                                 </div>
                             </div>
                         <?php } ?>
