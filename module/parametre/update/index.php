@@ -40,16 +40,16 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                 
                     <div class="row">
                         <div class="col-md-12">
-
+                        <?php
+                        if($donnee_maj['version_module'] != $select_metronic['version_latest']){
+                        ?>
                             <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Panel Title</h3>
-                                </div>
                                 <div class="panel-body">
-                                    Panel body
+                                    <div style="text-align: center;"><i class="fa fa-download fa-5x"></i></div>
+                                    
                                 </div>
                             </div>
-
+                        <?php } ?>
                         </div>
                     </div>
                 
