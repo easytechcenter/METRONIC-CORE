@@ -96,12 +96,12 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                             <div class="message-box animated fadeIn" id="info-module">
                                                                 <div class="mb-container">
                                                                     <div class="mb-middle">
-                                                                        <div class="mb-title"><span class="fa fa-globe"></span> Some <strong>Title</strong></div>
+                                                                        <div class="mb-title"><span class="fa fa-globe"></span> Module <strong><?php echo $donnee_module['titre_module']; ?></strong></div>
                                                                         <div class="mb-content">
-                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at tellus sed mauris mollis pellentesque nec a ligula. Quisque ultricies eleifend lacinia. Nunc luctus quam pretium massa semper tincidunt. Praesent vel mollis eros. Fusce erat arcu, feugiat ac dignissim ac, aliquam sed urna. Maecenas scelerisque molestie justo, ut tempor nunc.</p>                    
+                                                                            <?php echo html_entity_decode($donnee_module['desc_module']); ?>                    
                                                                         </div>
                                                                         <div class="mb-footer">
-                                                                            <button class="btn btn-default btn-lg pull-right mb-control-close">Close</button>
+                                                                            <button class="btn btn-default btn-lg pull-right mb-control-close">Fermer la fenêtre</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
