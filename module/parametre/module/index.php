@@ -187,12 +187,12 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                                     <?php
                                                                     if($donnee_module['etat_module'] == '0'){
                                                                     ?>
-                                                                    <form action="index.php" method="POST">
+                                                                    <form action="index.php" method="POST" role="form">
                                                                         <input type="hidden" name="key_dev" value="<?php echo $donnee_module['key_dev']; ?>">
                                                                         <button type="submit" class="btn btn-success" name="active_module" value="Valider"><i class="fa fa-check-circle"></i> Activé</button>
                                                                     </form>
                                                                     <?php }else{ ?>
-                                                                    <form action="index.php" method="POST">
+                                                                    <form action="index.php" method="POST" role="form">
                                                                         <input type="hidden" name="key_dev" value="<?php echo $donnee_module['key_dev']; ?>">
                                                                         <button type="submit" class="btn btn-danger" name="desactive_module" value="Valider"><i class="fa fa-times-circle"></i> Désactivé</button>
                                                                     </form>
