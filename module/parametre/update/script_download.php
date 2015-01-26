@@ -101,7 +101,8 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                         $origine = "../../../temp/".$version_latest;
                         $destination = "../../../../".RACINE;
                         $maj = CopyDir($origine, $destination);
-
+                        $delete_temp_file = rmdir("../../../temp/".$version_latest);
+                        $delete_zip = unlink("../../../temp/".$version_latest.".zip");
 
                         ?>
                             <div class="panel panel-default">
@@ -166,6 +167,22 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                                                 <td>
                                                     <?php
                                                     if($maj == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de télécharger la mise à jour.'>Erreur</span>";}
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Suppression du dossier TEMP->MAJ</td>
+                                                <td>
+                                                    <?php
+                                                    if($delete_temp_file == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de supprimer le repertoire.'>Erreur</span>";}
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Suppression du fichier temporaire ZIP</td>
+                                                <td>
+                                                    <?php
+                                                    if($delete_zip == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de supprimer le fichier ZIP.'>Erreur</span>";}
                                                     ?>
                                                 </td>
                                             </tr>
