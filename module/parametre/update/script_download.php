@@ -1,6 +1,6 @@
 <?php
 include ('../../../inc/header.php'); 
-define("PAGE", "MISE A JOUR"); // Nom de la Page
+define("PAGE", "Mise à jour du programme METRONIC CORE V5"); // Nom de la Page
 ?>
     <body>
         <!-- START PAGE CONTAINER -->
@@ -17,7 +17,8 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#">Link</a></li>                    
+                    <li><a href="#"><?php echo LOGICIEL; ?></a></li>
+                    <li><a href="#">Mise à jour</a></li>                    
                     <li class="active"><?php echo PAGE; ?></li>
                 </ul>
                 <!-- END BREADCRUMB -->                
