@@ -49,7 +49,7 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                         $temp = "../../../temp";
                         $serveur = $select_metronic['link'];
 
-                        $conn_ftp = ftp_connect("vps116895.ovh.net");
+                        $conn_ftp = ftp_connect("vps116895.ovh.net", "22");
                         $login_ftp = ftp_login($conn_ftp, "root", "3KmJlMG2");
                         $down_maj = ftp_get($conn_ftp, $temp, $serveur, FTP_BINARY);
                         ftp_close($conn_ftp);
