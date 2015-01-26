@@ -98,9 +98,102 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                                     <div class="mb-middle">
                                                                         <div class="mb-title"><span class="fa fa-globe"></span> Module <strong><?php echo $donnee_module['titre_module']; ?></strong></div>
                                                                         <div class="mb-content">
-                                                                            <div style="font-size: 32px; font-weight: bold;">Description du Module</div>
+                                                                            <div style="font-size: 22px; font-weight: bold;">Description du Module</div>
                                                                             <?php html_entity_decode($donnee_module['desc_module']); ?><br>
-                                                                            <div style="font-size: 32px; font-weight: bold;">Information technique sur le Module</div>
+                                                                            <div style="font-size: 22px; font-weight: bold;">Information technique sur le Module</div>
+                                                                            Comptabilité du programme: 
+                                                                            <div class="progress">
+                                                                                <div style="width: <?php echo $donnee_module['compatibilite']; ?>%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="<?php echo $donnee_module['compatibilite']; ?>" role="progressbar" class="progress-bar 
+                                                                                <?php
+                                                                                if($donnee_module['compatibilite'] < '33'){echo 'progress-bar-danger';}
+                                                                                if($donnee_module['compatibilite'] > '33' AND $donnee_module['compatibilite'] < '66'){echo 'progress-bar-warning';}
+                                                                                if($donnee_module['compatibilite'] > '66'){echo 'progress-bar-success';}
+                                                                                ?>
+                                                                                ">
+                                                                                    <?php echo $donnee_module['compatibilite']; ?>%
+                                                                                </div>
+                                                                            </div><br>
+                                                                            Version du Module:
+                                                                            <strong><?php echo $donnee_module['version_module']; ?></strong><br>
+                                                                            Date de la dernière Mise à Jour:
+                                                                            <strong><?php echo $donnee_module['date_maj']; ?></strong>                     
+                                                                        </div>
+                                                                        <div class="mb-footer">
+                                                                            <button class="btn btn-default btn-lg pull-right mb-control-close">Fermer la fenêtre</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <?php } ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>                                
+                                        </div>
+                                    <?php } ?>
+                                    <?php
+                                    $sql_cat_module = mysql_query("SELECT * FROM cat_module WHERE idcatmodule = '2'")or die(mysql_error());
+                                    while($cat_module = mysql_fetch_array($sql_cat_module))
+                                        {
+                                    ?>
+                                        <div class="panel panel-primary">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a href="#accOneColOne">
+                                                        <?php echo $cat_module['libelle_cat_module']; ?>
+                                                    </a>
+                                                </h4>
+                                            </div>                                
+                                            <div class="panel-body panel-body-open" id="accOneColOne">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-striped table-actions">
+                                                        <thead>
+                                                            <tr>
+                                                                <th width="50">Référence</th>
+                                                                <th>Information Module</th>
+                                                                <th width="100">Version</th>
+                                                                <th width="100"></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>  
+                                                        <?php
+                                                        $sql_module = mysql_query("SELECT * FROM module WHERE cat_module = '2'")or die(mysql_error());
+                                                        while($donnee_module = mysql_fetch_array($sql_module))
+                                                        {
+                                                        ?>                                          
+                                                            <tr id="trow_1">
+                                                                <td class="text-center"><?php echo $donnee_module['key_dev']; ?></td>
+                                                                <td>
+                                                                    <strong><?php echo $donnee_module['titre_module']; ?></strong><br>
+                                                                    <h5><i><?php echo $donnee_module['short_desc_module']; ?></i></h5>
+                                                                </td>
+                                                                <td>
+                                                                    <?php
+                                                                    $version_serveur = file_get_contents("http://vps116895.ovh.net/maj/".$donnee_module['key_dev']."/version.ini");
+                                                                    if($donnee_module['version_module'] != $version_serveur){
+                                                                    ?>
+                                                                    <span class="label label-danger" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Version non mis à jour"><?php echo $donnee_module['version_module']; ?></span>
+                                                                    <?php }else{ ?>
+                                                                    <span class="label label-success"><?php echo $donnee_module['version_module']; ?></span>
+                                                                    <?php } ?>
+                                                                </td>
+                                                                <td>
+                                                                    <a class="btn btn-info mb-control" data-box="#info-module"><i class="fa fa-eye"></i> Voir Les Information du Module</a>
+                                                                    <?php
+                                                                    if($donnee_module['version_module'] != $version_serveur){
+                                                                    ?>
+                                                                    <a class="btn btn-danger btn-xs" href="">Update</a>
+                                                                    <?php } ?>
+                                                                </td>  
+                                                            </tr>
+                                                            <div class="message-box animated fadeIn" id="info-module">
+                                                                <div class="mb-container">
+                                                                    <div class="mb-middle">
+                                                                        <div class="mb-title"><span class="fa fa-globe"></span> Module <strong><?php echo $donnee_module['titre_module']; ?></strong></div>
+                                                                        <div class="mb-content">
+                                                                            <div style="font-size: 22px; font-weight: bold;">Description du Module</div>
+                                                                            <?php html_entity_decode($donnee_module['desc_module']); ?><br>
+                                                                            <div style="font-size: 22px; font-weight: bold;">Information technique sur le Module</div>
                                                                             Comptabilité du programme: 
                                                                             <div class="progress">
                                                                                 <div style="width: <?php echo $donnee_module['compatibilite']; ?>%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="<?php echo $donnee_module['compatibilite']; ?>" role="progressbar" class="progress-bar 
