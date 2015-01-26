@@ -25,7 +25,10 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                 <div class="page-title">                    
                     <h2><span class="fa fa-arrow-circle-o-left"></span> Gestion de la société</h2>
                 </div>                   
-                
+                <?php
+                $sql_societe = mysql_query("SELECT * FROM societe WHERE idsociete = '1'")or die(mysql_error());
+                $donnee_societe = mysql_fetch_array($sql_societe);
+                ?>
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
                 
@@ -41,7 +44,7 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                             <div class="col-md-12">
                                                 <div class="input-group input-group-lg">                                            
                                                     <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                                                    <input type="text" placeholder="Large" class="form-control">
+                                                    <input type="text" class="form-control" name="raison_social" value="<?php echo $donnee_societe['raison_social']; ?>">
                                                 </div>
                                             </div>
                                         </div>
