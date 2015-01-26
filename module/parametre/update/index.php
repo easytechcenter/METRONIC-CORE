@@ -25,7 +25,16 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                 <div class="page-title">                    
                     <h2><span class="fa fa-arrow-circle-o-left"></span> MISE A JOUR METRONIC</h2>
                 </div>                   
-                
+                <?php
+	                $sql_maj = mysql_query("SELECT * FROM module WHERE key_dev = '58445'")or die(mysql_error());
+	                $donnee_maj = mysql_fetch_array($sql_maj);
+	                mysql_connect("localhost", "root", "1992maxime")or die(mysql_error());
+	                mysql_select_db("maj_programme");
+	                $sql_select_metronic = mysql_query("SELECT * FROM metronic WHERE key_dev = '58445'")or die(mysql_error());
+	                $select_metronic = mysql_fetch_array($sql_select_metronic);
+	                mysql_connect("localhost", "root", "1992maxime")or die(mysql_error());
+	                mysql_select_db("metronic");
+                ?>
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
                 
