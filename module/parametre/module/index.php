@@ -101,20 +101,22 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                                             <div style="font-size: 32px; font-weight: bold;">Description du Module</div>
                                                                             <?php html_entity_decode($donnee_module['desc_module']); ?><br>
                                                                             <div style="font-size: 32px; font-weight: bold;">Information technique sur le Module</div>
-                                                                            <table>
-                                                                                <tr>
-                                                                                    <td>Compatibilité</td>
-                                                                                    <td><?php echo $donnee_module['compatibilite']; ?></td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>Date de la dernière Mise à jour</td>
-                                                                                    <td><?php echo $donnee_module['date_maj']; ?></td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>Version actuel du Module</td>
-                                                                                    <td><?php echo $donnee_module['version_module']; ?></td>
-                                                                                </tr>
-                                                                            </table>                     
+                                                                            Comptabilité du programme: 
+                                                                            <div class="progress">
+                                                                                <div style="width: <?php echo $donnee_module['compatibilite']; ?>%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="<?php echo $donnee_module['compatibilite']; ?>" role="progressbar" class="progress-bar 
+                                                                                <?php
+                                                                                if($donnee_module['compatibilite'] < '33'){echo 'progress-bar-danger';}
+                                                                                if($donnee_module['compatibilite'] > '33' AND $donnee_module['compatibilite'] < '66'){echo 'progress-bar-warning';}
+                                                                                if($donnee_module['compatibilite'] > '66'){echo 'progress-bar-success';}
+                                                                                ?>
+                                                                                ">
+                                                                                    <?php echo $donnee_module['compatibilite']; ?>%
+                                                                                </div>
+                                                                            </div><br>
+                                                                            Version du Module:
+                                                                            <strong><?php echo $donnee_module['version_module']; ?></strong><br>
+                                                                            Date de la dernière Mise à Jour:
+                                                                            <strong><?php echo $donnee_module['date_maj']; ?></strong>                     
                                                                         </div>
                                                                         <div class="mb-footer">
                                                                             <button class="btn btn-default btn-lg pull-right mb-control-close">Fermer la fenêtre</button>
