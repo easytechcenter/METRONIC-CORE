@@ -26,7 +26,12 @@
                     </li>
                     <li class="active">
                         <a href="<?php echo SITE_URL,RACINE; ?>"><span class="fa fa-desktop"></span> <span class="xn-text">Accueil</span></a>                        
-                    </li>                    
+                    </li>
+                    <?php
+                    $sql_module_metronic = mysql_query("SELECT * FROM module WHERE ref_dev = '58445'")or die(mysql_error());
+                    $donnee_module_metronic = mysql_fetch_array($sql_module_metronic);
+                    if($donnee_module_metronic['etat_module'] == '1'){
+                    ?>                    
                     <li class="xn-openable">
                         <a href="#">
                             <span class="fa fa-cogs"></span> 
@@ -55,7 +60,8 @@
                             </li>
 
                         </ul>
-                    </li>                                                         
+                    </li>
+                    <?php } ?>                                                         
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>
