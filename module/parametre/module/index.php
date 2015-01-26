@@ -85,7 +85,7 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                                     <?php } ?>
                                                                 </td>
                                                                 <td>
-                                                                    <a class="btn btn-info" href=""><i class="fa fa-eye"></i> Voir Les Information du Module</a>
+                                                                    <a class="btn btn-info mb-control" data-box="#info-module"><i class="fa fa-eye"></i> Voir Les Information du Module</a>
                                                                     <?php
                                                                     if($donnee_module['version_module'] != $version_serveur){
                                                                     ?>
@@ -93,6 +93,19 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                                     <?php } ?>
                                                                 </td>  
                                                             </tr>
+                                                            <div class="message-box animated fadeIn" id="info-module">
+                                                                <div class="mb-container">
+                                                                    <div class="mb-middle">
+                                                                        <div class="mb-title"><span class="fa fa-globe"></span> Some <strong>Title</strong></div>
+                                                                        <div class="mb-content">
+                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at tellus sed mauris mollis pellentesque nec a ligula. Quisque ultricies eleifend lacinia. Nunc luctus quam pretium massa semper tincidunt. Praesent vel mollis eros. Fusce erat arcu, feugiat ac dignissim ac, aliquam sed urna. Maecenas scelerisque molestie justo, ut tempor nunc.</p>                    
+                                                                        </div>
+                                                                        <div class="mb-footer">
+                                                                            <button class="btn btn-default btn-lg pull-right mb-control-close">Close</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         <?php } ?>
                                                         </tbody>
                                                     </table>
