@@ -67,7 +67,7 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                             $sql_maj = mysql_query($req);
                         }
 
-                        $maj = copy('../../../temp/'.$version_latest., '../../../../metronic/');
+                        $maj = copy('../../../temp/'.$version_latest.'', '../../../../metronic/');
 
 
                         ?>
