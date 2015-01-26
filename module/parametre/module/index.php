@@ -25,7 +25,7 @@ define("PAGE", "MODULE"); // Nom de la Page
                 <div class="page-title">                    
                     <h2><span class="fa fa-arrow-circle-o-left"></span> MODULE</h2>
                 </div>                   
-                
+
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
                 
@@ -58,46 +58,35 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                             <tr>
                                                                 <th width="50">Référence</th>
                                                                 <th>Information Module</th>
-                                                                <th width="100">status</th>
-                                                                <th width="100">amount</th>
-                                                                <th width="100">date</th>
-                                                                <th width="100">actions</th>
+                                                                <th width="100">Version</th>
+                                                                <th width="100"></th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>                                            
+                                                        <tbody>  
+                                                        <?php
+                                                        $sql_module = mysql_query("SELECT * FROM module WHERE cat_module = '1'")or die(mysql_error());
+                                                        while($donnee_module = mysql_fetch_array($sql_module))
+                                                        {
+                                                        ?>                                          
                                                             <tr id="trow_1">
-                                                                <td class="text-center">1</td>
-                                                                <td><strong>John Doe</strong></td>
-                                                                <td><span class="label label-success">New</span></td>
-                                                                <td>$430.20</td>
-                                                                <td>24/09/2014</td>
+                                                                <td class="text-center"><?php echo $donnee_module['key_dev']; ?></td>
                                                                 <td>
-                                                                    <button class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></button>
-                                                                    <button class="btn btn-danger btn-rounded btn-sm" onClick="delete_row('trow_1');"><span class="fa fa-times"></span></button>
+                                                                    <strong><?php echo $donnee_module['titre_module']; ?></strong><br>
+                                                                    <h5><i><?php echo $donnee_module['short_desc_module']; ?></i></h5>
                                                                 </td>
-                                                            </tr>
-                                                            <tr id="trow_2">
-                                                                <td class="text-center">2</td>
-                                                                <td><strong>Dmitry Ivaniuk</strong></td>
-                                                                <td><span class="label label-warning">Pending</span></td>
-                                                                <td>$1,351.00</td>
-                                                                <td>23/09/2014</td>
                                                                 <td>
-                                                                    <button class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></button>
-                                                                    <button class="btn btn-danger btn-rounded btn-sm" onClick="delete_row('trow_2');"><span class="fa fa-times"></span></button>
+                                                                    <?php
+                                                                    $version_serveur = file_get_contents("http://vps116895.ovh.net/maj/".$donnee_module['key_dev']."/version.ini");
+                                                                    if($donnee_module['version_module'] != $version_serveur){
+                                                                    ?>
+                                                                    <span class="label label-danger" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Version non mis à jour"><?php echo $donnee_module['version_module']; ?></span>
+                                                                    <?php }else{ ?>
+                                                                    <span class="label label-success"><?php echo $donnee_module['version_module']; ?></span>
+                                                                    <?php } ?>
                                                                 </td>
+                                                                <td>$430.20</td>  
                                                             </tr>
-                                                            <tr id="trow_3">
-                                                                <td class="text-center">3</td>
-                                                                <td><strong>Nadia Ali</strong></td>
-                                                                <td><span class="label label-info">In Queue</span></td>
-                                                                <td>$2,621.00</td>
-                                                                <td>22/09/2014</td>
-                                                                <td>
-                                                                    <button class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></button>
-                                                                    <button class="btn btn-danger btn-rounded btn-sm" onClick="delete_row('trow_3');"><span class="fa fa-times"></span></button>
-                                                                </td>
-                                                            </tr>
+                                                        <?php } ?>
                                                         </tbody>
                                                     </table>
                                                 </div>
