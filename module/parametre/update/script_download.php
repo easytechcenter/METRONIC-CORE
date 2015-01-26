@@ -49,10 +49,7 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                         $temp = "../../../temp";
                         $serveur = $select_metronic['link'];
 
-                        $conn_ftp = ftp_connect("vps116895.ovh.net", "22");
-                        $login_ftp = ftp_login($conn_ftp, "root", "3KmJlMG2");
-                        $down_maj = ftp_get($conn_ftp, $temp, $serveur, FTP_BINARY);
-                        ftp_close($conn_ftp);
+                        $file_maj = copy($serveur, $temp);
 
                         //extraction de l'archive
                         $zip = new ZipArchive();
@@ -97,26 +94,10 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Connexion au serveur FTP</td>
+                                                <td>Transaction avec le serveur de mise à jour</td>
                                                 <td>
                                                     <?php
-                                                    if($conn_ftp == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Connexion au serveur FTP impossible'>Erreur</span>";}
-                                                    ?>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Connexion au serveur FTP</td>
-                                                <td>
-                                                    <?php
-                                                    if($login_ftp == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Vérifier les identifiants et le mot de passe FTP'>Erreur</span>";}
-                                                    ?>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Transaction du serveur vers le fichier local</td>
-                                                <td>
-                                                    <?php
-                                                    if($down_maj == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de télécharger la mise à jour'>Erreur</span>";}
+                                                    if($file_maj == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de télécharger le fichier de Mise à jour'>Erreur</span>";}
                                                     ?>
                                                 </td>
                                             </tr>
