@@ -28,7 +28,7 @@
                         <a href="<?php echo SITE_URL,RACINE; ?>"><span class="fa fa-desktop"></span> <span class="xn-text">Accueil</span></a>                        
                     </li>
                     <?php
-                    $sql_module_metronic = mysql_query("SELECT * FROM module WHERE ref_dev = '58445'")or die(mysql_error());
+                    $sql_module_metronic = mysql_query("SELECT * FROM module WHERE key_dev = '58445'")or die(mysql_error());
                     $donnee_module_metronic = mysql_fetch_array($sql_module_metronic);
                     if($donnee_module_metronic['etat_module'] == '1'){
                     ?>                    
