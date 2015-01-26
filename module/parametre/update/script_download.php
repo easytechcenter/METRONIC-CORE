@@ -56,9 +56,9 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
 
                         $ouverture_zip = $zip->open('../../../temp/'.$version_latest.'.zip');
                         $extraction = $zip->extractTo('../../../temp/'.$version_latest.'');
-                        $chmod = exec("chmod -R 777 /var/www/".RACINE."/temp/".$version_latest."");
+                        $chmod = exec("chmod -R 777 /var/www/metronic/temp/".$version_latest."");
                         //Mise à jour de l'instruction SQL
-                        $dir_file_sql = exec("cd /var/www/".RACINE."/temp");
+                        $dir_file_sql = exec("cd /var/www/metronic/temp/");
                         $maj_sql = exec("mysql -u root -p1992maxime metronic < maj.sql");
 
                         //fONCTION DE COPIE DE FICHIER
