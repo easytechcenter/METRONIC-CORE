@@ -39,11 +39,12 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                     <h3 class="panel-title">Information Général</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <form role="form" action="index.php" method="POST">
+                                    <form role="form" action="<?php echo SITE_URL,RACINE; ?>/inc/script/parametrage.php" method="POST">
                                         <div class="form-group">
-                                            <div class="col-md-12">
+                                            <label class="col-md-2 control-label">Raison Social</label>
+                                            <div class="col-md-10">
                                                 <div class="input-group input-group-lg">                                            
-                                                    <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                                                    <span class="input-group-addon">Rs</span>
                                                     <input type="text" class="form-control" name="raison_social" value="<?php echo $donnee_societe['raison_social']; ?>">
                                                 </div>
                                             </div>
