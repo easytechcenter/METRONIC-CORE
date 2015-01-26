@@ -139,12 +139,12 @@ define("PAGE", "MODULE"); // Nom de la Page
                                         <div class="panel panel-primary">
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">
-                                                    <a href="#accOneColOne">
+                                                    <a href="#accOneCol2">
                                                         <?php echo $cat_module['libelle_cat_module']; ?>
                                                     </a>
                                                 </h4>
                                             </div>                                
-                                            <div class="panel-body panel-body-open" id="accOneColOne">
+                                            <div class="panel-body panel-body-open" id="accOneCol2">
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-striped table-actions">
                                                         <thead>
