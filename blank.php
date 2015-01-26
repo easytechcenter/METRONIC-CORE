@@ -17,7 +17,7 @@ define("PAGE", ""); // Nom de la Page
                 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#">Link</a></li>                    
+                    <li><a href="#"><?php echo LOGICIEL; ?></a></li>                    
                     <li class="active"><?php echo PAGE; ?></li>
                 </ul>
                 <!-- END BREADCRUMB -->                

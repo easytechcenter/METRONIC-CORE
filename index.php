@@ -11,7 +11,7 @@ $page = "ACCEUIL";
                 <?php include ('inc/headerbar.php'); ?>
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>                    
+                    <li><a href="#"><?php echo LOGICIEL; ?></a></li>                    
                     <li class="active"><?php echo $page; ?></li>
                 </ul>
                 <!-- END BREADCRUMB -->                       

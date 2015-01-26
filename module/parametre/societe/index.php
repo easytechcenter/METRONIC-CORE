@@ -1,6 +1,6 @@
 <?php
 include ('../../../inc/header.php'); 
-define("PAGE", "MISE A JOUR"); // Nom de la Page
+define("PAGE", "Gestion de la société"); // Nom de la Page
 ?>
     <body>
         <!-- START PAGE CONTAINER -->
@@ -23,46 +23,24 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                 <!-- END BREADCRUMB -->                
                 
                 <div class="page-title">                    
-                    <h2><span class="fa fa-arrow-circle-o-left"></span> MISE A JOUR METRONIC</h2>
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Gestion de la société</h2>
                 </div>                   
-                <?php
-	                $sql_maj = mysql_query("SELECT * FROM module WHERE key_dev = '58445'")or die(mysql_error());
-	                $donnee_maj = mysql_fetch_array($sql_maj);
-	                mysql_connect("localhost", "root", "1992maxime")or die(mysql_error());
-	                mysql_select_db("maj_programme");
-	                $sql_select_metronic = mysql_query("SELECT * FROM metronic WHERE key_dev = '58445'")or die(mysql_error());
-	                $select_metronic = mysql_fetch_array($sql_select_metronic);
-	                mysql_connect("localhost", "root", "1992maxime")or die(mysql_error());
-	                mysql_select_db("metronic");
-                ?>
+                
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
                 
                     <div class="row">
                         <div class="col-md-12">
-                        <?php
-                        if($donnee_maj['version_module'] != $select_metronic['version_latest']){
-                        ?>
+
                             <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Panel Title</h3>
+                                </div>
                                 <div class="panel-body">
-                                    <div style="text-align: center;"><i class="fa fa-download fa-5x"></i></div>
-                                    <div class="col-md-9">
-                                    	<h2>Note de mise à jour <?php echo $select_metronic['version_latest']; ?></h2><br>
-                                    	<p><?php echo $select_metronic['desc_maj']; ?></p>
-                                    </div>
-                                    <div class="col-md-3">
-                                    	<a href="script_download.php?version_latest=<?php echo $select_metronic['version_latest']; ?>" class="btn btn-success btn-lg"><i class="fa fa-download"></i> Télécharger la Mise à jour<br><h6><?php echo $select_metronic['version_previous']; ?> vers <?php echo $select_metronic['version_latest']; ?></h6></a>
-                                    </div>
+                                    Panel body
                                 </div>
                             </div>
-                        <?php }else{ ?>
-                        	<div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div style="text-align: center;"><i class="fa fa-download fa-5x"></i></div>
-                                    <h1 style="text-align: center;">Aucune Mise à jour Disponible</h1>
-                                </div>
-                            </div>
-                        <?php } ?>
+
                         </div>
                     </div>
                 
