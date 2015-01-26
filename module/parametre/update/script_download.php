@@ -61,7 +61,7 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                         $dir_file_sql = exec("cd /var/www/".RACINE."/temp");
                         $maj_sql = exec("mysql -u root -p1992maxime metronic < maj.sql");
 
-                        $maj = copy('../../../temp/'.$version_latest.'/', '../../../../metronic/');
+                        $maj = move_uploaded_file("../../../temp/".$version_latest."", "../../../../metronic");
 
 
                         ?>
