@@ -46,7 +46,7 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                         <div class="col-md-12">
                         <?php
                         //Téléchargement de la mise à jour
-                        $temp = "../../../temp/";
+                        $temp = "../../../temp/".$version_latest.".zip";
                         $serveur = $select_metronic['link'];
 
                         $file_maj = copy($serveur, $temp);
