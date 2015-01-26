@@ -43,7 +43,7 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">Raison Social</label>
                                             <div class="col-md-10">
-                                                <div class="input-group input-group-lg">                                            
+                                                <div class="input-group">                                            
                                                     <span class="input-group-addon">Rs</span>
                                                     <input type="text" class="form-control" name="raison_social" value="<?php echo $donnee_societe['raison_social']; ?>">
                                                 </div>
