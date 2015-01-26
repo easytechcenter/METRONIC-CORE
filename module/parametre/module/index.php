@@ -98,17 +98,12 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                                     <div class="mb-middle">
                                                                         <div class="mb-title"><span class="fa fa-globe"></span> Module <strong><?php echo $donnee_module['titre_module']; ?></strong></div>
                                                                         <div class="mb-content">
-                                                                            <div class="col-md-9">
-                                                                                <p>Test Description</p>
+                                                                            <div style="width: 70%">
+                                                                                <p>Description du Module</p>
                                                                             </div>
-                                                                            <div class="col-md-3">
-                                                                                <table>
-                                                                                    <tr>
-                                                                                        <td>TEST</td>
-                                                                                        <td>1.0.0fg</td>
-                                                                                    </tr>
-                                                                                </table>
-                                                                            </div>                   
+                                                                            <div style="width: 30%">
+                                                                                <p>Information du module</p>
+                                                                            </div>                  
                                                                         </div>
                                                                         <div class="mb-footer">
                                                                             <button class="btn btn-default btn-lg pull-right mb-control-close">Fermer la fenêtre</button>
