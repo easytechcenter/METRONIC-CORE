@@ -98,12 +98,23 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                                     <div class="mb-middle">
                                                                         <div class="mb-title"><span class="fa fa-globe"></span> Module <strong><?php echo $donnee_module['titre_module']; ?></strong></div>
                                                                         <div class="mb-content">
-                                                                            <div style="width: 70%">
-                                                                                <p>Description du Module</p>
-                                                                            </div>
-                                                                            <div style="width: 30%">
-                                                                                <p>Information du module</p>
-                                                                            </div>                  
+                                                                            <div style="font-size: 32px; font-weight: bold;">Description du Module</div>
+                                                                            <?php html_entity_decode($donnee_module['desc_module']); ?><br>
+                                                                            <div style="font-size: 32px; font-weight: bold;">Information technique sur le Module</div>
+                                                                            <table>
+                                                                                <tr>
+                                                                                    <td>Compatibilité</td>
+                                                                                    <td><?php echo $donnee_module['compatibilite']; ?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>Date de la dernière Mise à jour</td>
+                                                                                    <td><?php echo $donnee_module['date_maj']; ?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>Version actuel du Module</td>
+                                                                                    <td><?php echo $donnee_module['version_module']; ?></td>
+                                                                                </tr>
+                                                                            </table>                     
                                                                         </div>
                                                                         <div class="mb-footer">
                                                                             <button class="btn btn-default btn-lg pull-right mb-control-close">Fermer la fenêtre</button>
