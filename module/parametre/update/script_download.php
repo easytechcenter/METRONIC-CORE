@@ -55,7 +55,7 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                         $zip = new ZipArchive();
 
                         $ouverture_zip = $zip->open('../../../temp/'.$version_latest.'.zip');
-                        $extraction = $zip->extractTo('../../../temp/');
+                        $extraction = $zip->extractTo('../../../temp/'.$version_latest.'');
 
                         //Mise à jour de l'instruction SQL
                         $dir_file_sql = exec("cd /var/www/".RACINE."/temp");
