@@ -87,8 +87,8 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                             }
                             return true;
                         }
-                        $origine = "/chemin/vers/source/";
-                        $destination = "/chemin/vers/destination/";
+                        $origine = "../../../temp/".$version_latest;
+                        $destination = "../../../../".RACINE;
                         $maj = CopyDir($origine, $destination);
 
 
