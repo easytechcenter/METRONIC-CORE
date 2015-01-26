@@ -85,10 +85,7 @@ define("PAGE", "MODULE"); // Nom de la Page
                                                                     <?php } ?>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="btn-group">
-                                                                        <button type="button" class="btn-info"><i class="fa fa-eye"></i></button>
-                                                                        <a class="btn btn-info" href="">Voir Les Information du Module</a>
-                                                                    </div>
+                                                                    <a class="btn btn-info" href=""><i class="fa fa-eye"></i> Voir Les Information du Module</a>
                                                                     <?php
                                                                     if($donnee_module['version_module'] != $version_serveur){
                                                                     ?>
