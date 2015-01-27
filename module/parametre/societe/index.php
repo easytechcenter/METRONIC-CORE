@@ -64,7 +64,7 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                             <div class="col-md-10">
                                                 <div class="input-group">                                            
                                                     <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                                                    <input type="text" class="form-control" name="adresse1" <?php if(empty($donnee_societe['adresse1']){echo "placeholde='Adresse de la société'";}else{echo "value='".$donnee_societe['adresse']."'";}?>>
+                                                    <input type="text" class="form-control" name="adresse1" <?php if(empty($donnee_societe['adresse1']){echo "placeholde='Adresse de la société'";}else{?>value="<?php echo $donnee_societe['adresse1']; ?>" <?php } ?>>
                                                 </div>
                                             </div>
                                         </div>
