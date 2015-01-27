@@ -106,7 +106,7 @@ define("PAGE", "Mise à jour du programme METRONIC CORE V5"); // Nom de la Page
                         $origine = "../../../temp/".$version_latest;
                         $destination = "../../../../metronic";
                         $maj = CopyDir($origine, $destination);
-                        $delete_temp_file = rmdir("../../../temp/");
+                        $delete_temp_file = rmdir("../../../temp/".$version_latest);
                         $delete_zip = unlink("../../../temp/".$version_latest.".zip");
 
                         ?>
