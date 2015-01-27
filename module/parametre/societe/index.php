@@ -68,6 +68,22 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Complément d'adresse</label>
+                                            <div class="col-md-10">
+                                                <textarea rows="5" class="form-control" name="adresse2" value="<?php echo $donnee_societe['adresse2']; ?>"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Code Postal</label>
+                                            <div class="col-md-3">
+                                                <input type="text" value="<?php echo $donnee_societe['cp']; ?>" name="cp" class="form-control">
+                                            </div>
+                                            <label class="col-md-2 control-label">Ville</label>
+                                            <div class="col-md-5">
+                                                <input type="text" value="<?php echo $donnee_societe['ville']; ?>" name="ville" class="form-control">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
