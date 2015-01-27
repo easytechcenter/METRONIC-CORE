@@ -34,7 +34,7 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                     <form role="form" action="<?php echo SITE_URL,RACINE; ?>/inc/script/parametrage.php" method="POST">
                         <div class="row">
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Information Général</h3>
@@ -53,10 +53,10 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Adresse & Coordonnée</h3>
+                                        <h3 class="panel-title">Adresse</h3>
                                     </div>
                                     <div class="panel-body">  
                                         <div class="form-group">
@@ -87,6 +87,17 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                             </div>
                                         </div>
                                         <br>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Coordonnée</h3>
+                                    </div>
+                                    <div class="panel-body">  
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">Téléphone</label>
                                             <div class="col-md-10">
