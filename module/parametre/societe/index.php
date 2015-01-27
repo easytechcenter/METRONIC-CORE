@@ -68,12 +68,14 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                                 </div>
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">Complément d'adresse</label>
                                             <div class="col-md-10">
                                                 <textarea rows="5" class="form-control" name="adresse2" value="<?php echo $donnee_societe['adresse2']; ?>"></textarea>
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">Code Postal</label>
                                             <div class="col-md-3">
