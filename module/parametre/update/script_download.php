@@ -1,6 +1,6 @@
 <?php
 include ('../../../inc/header.php'); 
-define("PAGE", "MISE A JOUR"); // Nom de la Page
+define("PAGE", "Mise à jour du programme METRONIC CORE V5"); // Nom de la Page
 ?>
     <body>
         <!-- START PAGE CONTAINER -->
@@ -17,7 +17,8 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#">Link</a></li>                    
+                    <li><a href="#"><?php echo LOGICIEL; ?></a></li>
+                    <li><a href="#">Mise à jour</a></li>                    
                     <li class="active"><?php echo PAGE; ?></li>
                 </ul>
                 <!-- END BREADCRUMB -->                
@@ -57,9 +58,26 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                         $ouverture_zip = $zip->open('../../../temp/'.$version_latest.'.zip');
                         $extraction = $zip->extractTo('../../../temp/'.$version_latest.'');
                         $chmod = exec("chmod -R 777 /var/www/metronic/temp/".$version_latest."");
+<<<<<<< HEAD
                         //Mise à jour de l'instruction SQL
                         $dir_file_sql = exec("cd /var/www/metronic/temp");
                         $maj_sql = exec("mysql -u root -p1992maxime metronic < maj.sql");
+=======
+
+                        //Mise à jour de l'instruction SQL
+                        $sql_file = file("../../../temp/".$version_latest."/maj.sql");
+                        foreach ($sql_file as $l){
+                            if(substr(trim($l), 0, 2)!="--"){
+                                $requetes .= $l;
+                            }
+                        }
+                        $split_sql = split(";", $requetes);
+                        foreach ($split_sql as $req){
+                            if(!mysql_query($req) && trim($req)!=""){
+                                die("ERREUR : ".$req);
+                            }
+                        }
+>>>>>>> origin/master
 
                         //fONCTION DE COPIE DE FICHIER
                         function CopyDir($origine, $destination) {
@@ -90,7 +108,8 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                         $origine = "../../../temp/".$version_latest;
                         $destination = "../../../../metronic";
                         $maj = CopyDir($origine, $destination);
-
+                        $delete_temp_file = rmdir("../../../temp/".$version_latest);
+                        $delete_zip = unlink("../../../temp/".$version_latest.".zip");
 
                         ?>
                             <div class="panel panel-default">
@@ -143,18 +162,10 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Fichier SQL</td>
+                                                <td>Fichier SQL & Mise à jour de la base de donnée</td>
                                                 <td>
                                                     <?php
-                                                    if($dir_file_sql == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de trouvez le fichier sql de mise à jour'>Erreur</span>";}
-                                                    ?>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mise à jour de la BDD</td>
-                                                <td>
-                                                    <?php
-                                                    if($maj_sql == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de mettre à jour la base de donnée'>Erreur</span>";}
+                                                    if($sql_file == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de mettre à jour la base de donnée'>Erreur</span>";}
                                                     ?>
                                                 </td>
                                             </tr>
@@ -163,6 +174,22 @@ define("PAGE", "MISE A JOUR"); // Nom de la Page
                                                 <td>
                                                     <?php
                                                     if($maj == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de télécharger la mise à jour.'>Erreur</span>";}
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Suppression du dossier TEMP->MAJ</td>
+                                                <td>
+                                                    <?php
+                                                    if($delete_temp_file == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de supprimer le repertoire.'>Erreur</span>";}
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Suppression du fichier temporaire ZIP</td>
+                                                <td>
+                                                    <?php
+                                                    if($delete_zip == TRUE){echo "<span class='label label-success label-form'>Succès</span>";}else{echo "<span class='label label-danger label-form' title='' data-placement='top' data-toggle='tooltip' data-original-title='Impossible de supprimer le fichier ZIP.'>Erreur</span>";}
                                                     ?>
                                                 </td>
                                             </tr>
