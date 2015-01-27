@@ -169,8 +169,8 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                         <?php }else{ ?>
                                         <div class="form-group has-error has-feedback">
                                             <label class="control-label">Siret</label>
-                                            <input type="text" class="form-control">
-                                            <span class="glyphicon glyphicon-remove form-control-feedback" data-placement="top" data-toggle="tooltip" data-original-title="Mauvais Siret"></span>
+                                            <input type="text" class="form-control" data-placement="top" data-toggle="tooltip" data-original-title="Mauvais Siret">
+                                            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                                         </div>
                                         <?php } ?>
                                         <br>
