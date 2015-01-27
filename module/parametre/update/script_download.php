@@ -57,7 +57,7 @@ define("PAGE", "Mise à jour du programme METRONIC CORE V5"); // Nom de la Page
 
                         $ouverture_zip = $zip->open('../../../temp/'.$version_latest.'.zip');
                         $extraction = $zip->extractTo('../../../temp/'.$version_latest.'');
-                        $chmod = exec("chmod -R 777 /var/www/metronic/temp/".$version_latest."");
+                        $chmod = chmod("../../../temp/".$version_latest, 0777);
 
                         
 
