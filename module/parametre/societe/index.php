@@ -56,7 +56,7 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                             <div class="col-md-4">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Adresse</h3>
+                                        <h3 class="panel-title">Adresse & Coordonnée</h3>
                                     </div>
                                     <div class="panel-body">  
                                         <div class="form-group">
@@ -84,6 +84,36 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                             <label class="col-md-2 control-label">Ville</label>
                                             <div class="col-md-5">
                                                 <input type="text" value="<?php echo $donnee_societe['ville']; ?>" name="ville" class="form-control">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Téléphone</label>
+                                            <div class="col-md-10">
+                                                <div class="input-group">                                            
+                                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                    <input type="text" class="form-control" name="telephone" value="<?php echo $donnee_societe['telephone']; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Fax</label>
+                                            <div class="col-md-10">
+                                                <div class="input-group">                                            
+                                                    <span class="input-group-addon"><i class="fa fa-fax"></i></span>
+                                                    <input type="text" class="form-control" name="fax" value="<?php echo $donnee_societe['fax']; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Email</label>
+                                            <div class="col-md-10">
+                                                <div class="input-group">                                            
+                                                    <span class="input-group-addon">@</span>
+                                                    <input type="text" class="form-control" name="mail" value="<?php echo $donnee_societe['mail']; ?>">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
