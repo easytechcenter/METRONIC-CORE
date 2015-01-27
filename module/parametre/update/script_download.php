@@ -58,11 +58,11 @@ define("PAGE", "Mise à jour du programme METRONIC CORE V5"); // Nom de la Page
                         $ouverture_zip = $zip->open('../../../temp/'.$version_latest.'.zip');
                         $extraction = $zip->extractTo('../../../temp/'.$version_latest.'');
                         $chmod = exec("chmod -R 777 /var/www/metronic/temp/".$version_latest."");
-<<<<<<< HEAD
+
                         //Mise à jour de l'instruction SQL
                         $dir_file_sql = exec("cd /var/www/metronic/temp");
                         $maj_sql = exec("mysql -u root -p1992maxime metronic < maj.sql");
-=======
+
 
                         //Mise à jour de l'instruction SQL
                         $sql_file = file("../../../temp/".$version_latest."/maj.sql");
@@ -77,7 +77,7 @@ define("PAGE", "Mise à jour du programme METRONIC CORE V5"); // Nom de la Page
                                 die("ERREUR : ".$req);
                             }
                         }
->>>>>>> origin/master
+
 
                         //fONCTION DE COPIE DE FICHIER
                         function CopyDir($origine, $destination) {
