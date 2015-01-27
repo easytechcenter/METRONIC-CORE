@@ -53,11 +53,6 @@
                                     <span class="fa fa-download"></span> Mise à jour
                                 </a>
                             </li>
-                            <li>
-                                <a href="<?php echo SITE_URL,RACINE; ?>module/parametre/module/">
-                                    <span class="glyphicon glyphicon-th"></span> Gestion des modules
-                                </a>
-                            </li>
 
                         </ul>
                     </li>
