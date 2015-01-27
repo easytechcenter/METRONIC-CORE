@@ -19,8 +19,8 @@
                                 <div class="profile-data-title"><?php echo $donnees_login['poste']; ?></div>
                             </div>
                             <div class="profile-controls">
-                                <a href="<?php echo $rootsite; ?>module/user/profil.php" class="profile-control-left"><span class="fa fa-info"></span></a>
-                                <a href="<?php echo $rootsite; ?>module/user/inbox.php" class="profile-control-right"><span class="fa fa-envelope"></span></a>
+                                <a href="<?php echo SITE_URL,RACINE; ?>module/user/profil/index.php" class="profile-control-left"><span class="fa fa-info"></span></a>
+                                <a href="<?php echo SITE_URL,RACINE; ?>module/user/mail/inbox.php" class="profile-control-right"><span class="fa fa-envelope"></span></a>
                             </div>
                         </div>                                                                        
                     </li>

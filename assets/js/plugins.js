@@ -167,19 +167,34 @@ $(function() {
         //Datatables
         var uiDatatable = function(){
             if($(".datatable").length > 0){                
-                $(".datatable").dataTable();
+                $(".datatable").dataTable(
+                {
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/French.json"
+                    }
+                });
                 $(".datatable").on('page.dt',function () {
                     onresize(100);
                 });
             }
             
             if($(".datatable_simple").length > 0){                
-                $(".datatable_simple").dataTable({"ordering": false, "info": false, "lengthChange": false,"searching": false});
+                $(".datatable_simple").dataTable(
+                    {
+                        "ordering": false, 
+                        "info": false, 
+                        "lengthChange": false,
+                        "searching": false,
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/French.json"
+                            }
+
+                    });
                 $(".datatable_simple").on('page.dt',function () {
                     onresize(100);
                 });                
             }            
-        }//END Datatable        
+        }//END Datatable       
         
         //RangeSlider // This function can be removed or cleared.
         var uiRangeSlider = function(){

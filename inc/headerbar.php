@@ -10,48 +10,44 @@
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->
+                    <?php
+                    $sql_count_new_mail = mysql_query("SELECT COUNT(idmessage) FROM messagerie WHERE etat_message = '0' AND destinataire = ".$donnees_login['iduser'])or die(mysql_error());
+                    $count_new_mail = mysql_result($sql_count_new_mail, 0);
+                    $sql_count_mail_sent = mysql_query("SELECT COUNT(idmessage) FROM messagerie WHERE expediteur = ".$donnees_login['iduser'])or die(mysql_error());
+                    $count_mail_sent = mysql_result($sql_count_mail_sent, 0);
+                    ?>
                     <!-- MESSAGES -->
-                    <!-- <li class="xn-icon-button pull-right">
+                    <?php
+                    if($count_new_mail == 0){echo "";}else{
+                    ?>
+                    <li class="xn-icon-button pull-right">
                         <a href="#"><span class="fa fa-comments"></span></a>
-                        <div class="informer informer-danger">4</div>
+                        <div class="informer informer-success"><?php echo $count_new_mail; ?></div>
                         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><span class="fa fa-comments"></span> Messages</h3>                                
+                                <h3 class="panel-title"><span class="fa fa-comments"></span> Messagerie Interne</h3>                                
                                 <div class="pull-right">
-                                    <span class="label label-danger">4 new</span>
+                                    <span class="label label-success"><?php echo $count_new_mail; ?> Nouveau Message</span>
                                 </div>
                             </div>
                             <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
+                            <?php
+                            $sql_mail = mysql_query("SELECT * FROM messagerie, utilisateur WHERE messagerie.expediteur = utilisateur.iduser AND destinataire = ".$donnees_login['iduser'])or die(mysql_error());
+                            while($donnee_mail = mysql_fetch_array($sql_mail)){
+                            ?>
                                 <a href="#" class="list-group-item">
-                                    <div class="list-group-status status-online"></div>
-                                    <img src="assets/images/users/user2.jpg" class="pull-left" alt="John Doe"/>
-                                    <span class="contacts-title">John Doe</span>
-                                    <p>Praesent placerat tellus id augue condimentum</p>
+                                    <img src="<?php echo SITE_URL,RACINE; ?>assets/img/user/<?php echo $donnee_mail['login']; ?>.png" class="pull-left" alt="John Doe"/>
+                                    <span class="contacts-title"><?php echo $donnee_mail['nom_user']; ?> <?php echo $donnee_mail['prenom_user']; ?></span>
+                                    <p><?php echo $donnee_mail['objet']; ?></p>
                                 </a>
-                                <a href="#" class="list-group-item">
-                                    <div class="list-group-status status-away"></div>
-                                    <img src="assets/images/users/user.jpg" class="pull-left" alt="Dmitry Ivaniuk"/>
-                                    <span class="contacts-title">Dmitry Ivaniuk</span>
-                                    <p>Donec risus sapien, sagittis et magna quis</p>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <div class="list-group-status status-away"></div>
-                                    <img src="assets/images/users/user3.jpg" class="pull-left" alt="Nadia Ali"/>
-                                    <span class="contacts-title">Nadia Ali</span>
-                                    <p>Mauris vel eros ut nunc rhoncus cursus sed</p>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <div class="list-group-status status-offline"></div>
-                                    <img src="assets/images/users/user6.jpg" class="pull-left" alt="Darth Vader"/>
-                                    <span class="contacts-title">Darth Vader</span>
-                                    <p>I want my money back!</p>
-                                </a>
+                            <?php } ?>
                             </div>     
                             <div class="panel-footer text-center">
-                                <a href="pages-messages.html">Show all messages</a>
+                                <a href="<?php echo SITE_URL,RACINE; ?>module/user/mail/inbox.php">Voir tous les messages</a>
                             </div>                            
                         </div>                        
-                    </li> -->
+                    </li>
+                    <?php } ?>
                     <!-- END MESSAGES -->
                     <!-- TASKS -->
                     <!-- <li class="xn-icon-button pull-right">

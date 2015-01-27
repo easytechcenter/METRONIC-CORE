@@ -15,4 +15,8 @@ define("ASSETS", "assets/");
 define("LOGICIEL", "METRONIC-CORE V5");
 
 $logiciel = "METRONIC-CORE V5";
+
+date_default_timezone_set("EUROPE/PARIS");
+$date = date("d-m-Y");
+$heure = date("H:i");
 ?>
