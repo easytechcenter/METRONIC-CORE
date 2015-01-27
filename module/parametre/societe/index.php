@@ -35,7 +35,16 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                 // On ne garde que les chiffres
                 $siret = preg_replace("/[^\d]+/", '', $siret);
                  
-                
+                // SIRET
+                print "SIRET : " . $siret;
+                if(checkLuhn($siret)) print " OK<br>"; else print " NOK<br>";
+                 
+                // SIREN
+                print "SIREN : " . $siren = nSIREN($siret);
+                if(checkLuhn($siren)) print " OK<br>"; else print " NOK<br>";
+                 
+                // N° TVA
+                print "N° TVA : " . nTVA($siren) . "<br>";
                  
                 // Vérification avec la méthode de Luhn
                 function checkLuhn($val) {
@@ -201,21 +210,15 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                             </div>
                                         </div>
                                         <br>
-                                        <?php
-                                        if(nTVA($siren)){
-                                        ?>
-                                        <div class="form-group has-success has-feedback">
-                                            <label class="control-label">TVA INTRA</label>
-                                            <input type="text" class="form-control" name="tva_intra" value="<?php echo $donnee_societe['tva_intra']; ?>">
-                                            <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">TVA INTRA</label>
+                                            <div class="col-md-10">
+                                                <div class="input-group">                                            
+                                                    <span class="input-group-addon">TVA</span>
+                                                    <input type="text" class="form-control" name="tva_intra" value="<?php echo $donnee_societe['tva_intra']; ?>">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <?php }else{ ?>
-                                        <div class="form-group has-error has-feedback">
-                                            <label class="control-label">TVA INTRA</label>
-                                            <input type="text" class="form-control" data-placement="top" data-toggle="tooltip" data-original-title="Mauvais N° de TVA Intracommunautaire">
-                                            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                                        </div>
-                                        <?php } ?>
                                         <br>
                                     </div>
                                 </div>
