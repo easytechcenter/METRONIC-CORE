@@ -49,6 +49,7 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                         // le numéro est valide si la somme des chiffres est multiple de 10
                         if (($sum % 10) != 0) return 3; else return 0;      
                     }
+
                 ?>
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
@@ -174,7 +175,19 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                         </div>
                                         <?php } ?>
                                         <br>
-                                        
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Code APE</label>
+                                            <div class="col-md-9">                                                                                
+                                                <select class="form-control select" data-live-search="true" name="ape" value="<?php echo $donnee_societe['ape']; ?>">
+                                                    <?php
+                                                    $sql_ape = mysql_query("SELECT * FROM code_ape")or die(mysql_error());
+                                                    while($donne_ape = mysql_fetch_array($sql_ape)){
+                                                    ?>
+                                                    <option value="<?php echo $donne_ape['code']; ?>"><?php echo $donne_ape['code']; ?> - <?php echo $donne_ape['libelle_ape']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -221,10 +234,18 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
         <!-- END PLUGINS -->
 
         <!-- THIS PAGE PLUGINS -->
-
-        <!-- END PAGE PLUGINS -->         
+        <script type='text/javascript' src='<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/icheck/icheck.min.js'></script>
+        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        
+        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/bootstrap/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/bootstrap/bootstrap-timepicker.min.js"></script>
+        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/bootstrap/bootstrap-colorpicker.js"></script>
+        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/bootstrap/bootstrap-file-input.js"></script>
+        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/bootstrap/bootstrap-select.js"></script>
+        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/tagsinput/jquery.tagsinput.min.js"></script>        
 
         <!-- START TEMPLATE -->
+        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/settings.js"></script>
         <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/actions.js"></script>        
         <!-- END TEMPLATE -->
