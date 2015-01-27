@@ -29,25 +29,46 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                 $sql_societe = mysql_query("SELECT * FROM societe WHERE idsociete = '1'")or die(mysql_error());
                 $donnee_societe = mysql_fetch_array($sql_societe);
                 //Verif siret
-                function is_siret($siret)
-                    {
-                        if (strlen($siret) != 14) return 1; // le SIRET doit contenir 14 caractères
-                        if (!is_numeric($siret)) return 2; // le SIRET ne doit contenir que des chiffres
-
-                        // on prend chaque chiffre un par un
-                        // si son index (position dans la chaîne en commence à 0 au premier caractère) est pair
-                        // on double sa valeur et si cette dernière est supérieure à 9, on lui retranche 9
-                        // on ajoute cette valeur à la somme totale
-
-                        for ($index = 0; $index < 14; $index ++)
-                        {
-                            $number = (int) $siret[$index];
-                            if (($index % 2) == 0) { if (($number *= 2) > 9) $number -= 9; }
-                            $sum += $number;
+                // SIRET de Google France
+                $siret = $donnee_societe['siret'];
+                 
+                // On ne garde que les chiffres
+                $siret = preg_replace("/[^\d]+/", '', $siret);
+                 
+                // SIRET
+                print "SIRET : " . $siret;
+                if(checkLuhn($siret)) print " OK<br>"; else print " NOK<br>";
+                 
+                // SIREN
+                print "SIREN : " . $siren = nSIREN($siret);
+                if(checkLuhn($siren)) print " OK<br>"; else print " NOK<br>";
+                 
+                // N° TVA
+                print "N° TVA : " . nTVA($siren) . "<br>";
+                 
+                // Vérification avec la méthode de Luhn
+                function checkLuhn($val) {
+                    $len = strlen($val);
+                    $total = 0;
+                    for ($i = 1; $i <= $len; $i++) {
+                        $chiffre = substr($val,-$i,1);
+                        if($i % 2 == 0) {
+                            $total += 2 * $chiffre;
+                            if((2 * $chiffre) >= 10) $total -= 9;
+                            }
+                        else $total += $chiffre;
                         }
-
-                        // le numéro est valide si la somme des chiffres est multiple de 10
-                        if (($sum % 10) != 0) return 3; else return 0;      
+                        if($total % 10 == 0) return true; else return false;
+                    }
+                 
+                // SIREN = 9 premiers chiffres du SIRET
+                function nSIREN($siret) {
+                    return substr($siret,0,9);
+                    }
+                 
+                // N°TVA = FR + clé + SIREN
+                function nTVA($siren) {
+                    return "FR" . (( 12 + 3 * ( $siren % 97 ) ) % 97 ) . $siren;
                     }
 
                 ?>
@@ -160,7 +181,7 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                     </div>
                                     <div class="panel-body">  
                                         <?php
-                                        if(is_siret($donnee_societe['siret']) == 0){
+                                        if(checkLuhn($siret)){
                                         ?>
                                         <div class="form-group has-success has-feedback">
                                             <label class="control-label">Siret</label>
@@ -188,6 +209,23 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                                 </select>
                                             </div>
                                         </div>
+                                        <br>
+                                        <?php
+                                        if(nTVA($siren)){
+                                        ?>
+                                        <div class="form-group has-success has-feedback">
+                                            <label class="control-label">TVA INTRA</label>
+                                            <input type="text" class="form-control" name="siret" value="<?php echo $donnee_societe['siret']; ?>">
+                                            <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                                        </div>
+                                        <?php }else{ ?>
+                                        <div class="form-group has-error has-feedback">
+                                            <label class="control-label">TVA INTRA</label>
+                                            <input type="text" class="form-control" data-placement="top" data-toggle="tooltip" data-original-title="Mauvais N° de TVA Intracommunautaire">
+                                            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                        </div>
+                                        <?php } ?>
+                                        <br>
                                     </div>
                                 </div>
                             </div>
