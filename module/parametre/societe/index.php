@@ -31,15 +31,15 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                 ?>
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
-                
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Information Général</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <form role="form" action="<?php echo SITE_URL,RACINE; ?>/inc/script/parametrage.php" method="POST">
+                    <form role="form" action="<?php echo SITE_URL,RACINE; ?>/inc/script/parametrage.php" method="POST">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Information Général</h3>
+                                    </div>
+                                    <div class="panel-body">  
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">Raison Social</label>
                                             <div class="col-md-10">
@@ -49,12 +49,31 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Adresse</h3>
+                                    </div>
+                                    <div class="panel-body">  
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Adresse</label>
+                                            <div class="col-md-10">
+                                                <div class="input-group">                                            
+                                                    <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                                                    <input type="text" class="form-control" name="adresse1" <?php if(empty($donnee_societe['adresse1']){echo "placeholde='Adresse de la société'";}else{echo "value='".$donnee_societe['adresse']."'";}?>>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
-                
+                    </form>
                 </div>
                 <!-- END PAGE CONTENT WRAPPER -->                
             </div>            
