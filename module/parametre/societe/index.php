@@ -185,7 +185,7 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                         ?>
                                         <div class="form-group has-success has-feedback">
                                             <label class="control-label">Siret</label>
-                                            <input type="text" class="form-control" name="siret" value="<?php echo $donnee_societe['siret']; ?>">
+                                            <input type="text" class="form-control" name="siret" value="<?php echo $siret ?>">
                                             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
                                         </div>
                                         <?php }else{ ?>
