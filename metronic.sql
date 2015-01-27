@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 27 Janvier 2015 à 15:37
+-- Généré le: Mar 27 Janvier 2015 à 21:42
 -- Version du serveur: 5.5.37-0ubuntu0.13.10.1
 -- Version de PHP: 5.5.3-1ubuntu2.6
 
@@ -1430,6 +1430,32 @@ INSERT INTO `maj` (`idmaj`, `version_latest`, `desc_maj`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `messagerie`
+--
+
+CREATE TABLE IF NOT EXISTS `messagerie` (
+  `idmessage` int(13) NOT NULL AUTO_INCREMENT,
+  `expediteur` int(13) NOT NULL,
+  `destinataire` int(13) NOT NULL,
+  `objet` varchar(255) NOT NULL,
+  `corps_message` longtext NOT NULL,
+  `etat_message` int(1) NOT NULL,
+  `date_message` varchar(255) NOT NULL,
+  `heure_message` varchar(255) NOT NULL,
+  `importance` int(1) NOT NULL,
+  PRIMARY KEY (`idmessage`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `messagerie`
+--
+
+INSERT INTO `messagerie` (`idmessage`, `expediteur`, `destinataire`, `objet`, `corps_message`, `etat_message`, `date_message`, `heure_message`, `importance`) VALUES
+(4, 3, 1, 'Test', 'test                                        \r\n                                        ', 0, '27-01-2015', '22:24', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `module`
 --
 
@@ -1501,14 +1527,15 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `prenom_user` varchar(255) NOT NULL,
   `poste` varchar(255) NOT NULL,
   PRIMARY KEY (`iduser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`iduser`, `login`, `pass`, `nom_user`, `prenom_user`, `poste`) VALUES
-(1, 'mmockelyn', '25f9e794323b453885f5181f1b624d0b', 'MOCKELYN', 'Maxime', 'Webmaster');
+(1, 'mmockelyn', '25f9e794323b453885f5181f1b624d0b', 'MOCKELYN', 'Maxime', 'Webmaster'),
+(3, 'dthomas', '25f9e794323b453885f5181f1b624d0b', 'THOMAS', 'Dominique', 'CDT GESTION SAS');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
