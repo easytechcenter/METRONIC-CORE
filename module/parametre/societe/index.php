@@ -35,16 +35,7 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                 // On ne garde que les chiffres
                 $siret = preg_replace("/[^\d]+/", '', $siret);
                  
-                // SIRET
-                print "SIRET : " . $siret;
-                if(checkLuhn($siret)) print " OK<br>"; else print " NOK<br>";
-                 
-                // SIREN
-                print "SIREN : " . $siren = nSIREN($siret);
-                if(checkLuhn($siren)) print " OK<br>"; else print " NOK<br>";
-                 
-                // N° TVA
-                print "N° TVA : " . nTVA($siren) . "<br>";
+                
                  
                 // Vérification avec la méthode de Luhn
                 function checkLuhn($val) {
@@ -215,7 +206,7 @@ define("PAGE", "Gestion de la société"); // Nom de la Page
                                         ?>
                                         <div class="form-group has-success has-feedback">
                                             <label class="control-label">TVA INTRA</label>
-                                            <input type="text" class="form-control" name="siret" value="<?php echo $donnee_societe['siret']; ?>">
+                                            <input type="text" class="form-control" name="tva_intra" value="<?php echo $donnee_societe['tva_intra']; ?>">
                                             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
                                         </div>
                                         <?php }else{ ?>
