@@ -21,13 +21,46 @@
                     if($count_new_mail == 0){echo "";}else{
                     ?>
                     <li class="xn-icon-button pull-right">
+                        <a href="#"><span class="fa fa-envelope"></span></a>
+                        <div class="informer informer-success"><?php echo $count_new_mail; ?></div>
+                        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><span class="fa fa-envelope"></span> Messagerie Interne</h3>                                
+                                <div class="pull-right">
+                                    <span class="label label-success"><?php echo $count_new_mail; ?> Nouveau Message</span>
+                                </div>
+                            </div>
+                            <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
+                            <?php
+                            $sql_mail = mysql_query("SELECT * FROM messagerie, utilisateur WHERE messagerie.expediteur = utilisateur.iduser AND destinataire = ".$donnees_login['iduser'])or die(mysql_error());
+                            while($donnee_mail = mysql_fetch_array($sql_mail)){
+                            ?>
+                                <a href="#" class="list-group-item">
+                                    <img src="<?php echo SITE_URL,RACINE; ?>assets/img/user/<?php echo $donnee_mail['login']; ?>.png" class="pull-left" alt="John Doe"/>
+                                    <span class="contacts-title"><?php echo $donnee_mail['nom_user']; ?> <?php echo $donnee_mail['prenom_user']; ?></span>
+                                    <p><?php echo $donnee_mail['objet']; ?></p>
+                                </a>
+                            <?php } ?>
+                            </div>     
+                            <div class="panel-footer text-center">
+                                <a href="<?php echo SITE_URL,RACINE; ?>module/user/mail/inbox.php">Voir tous les messages</a>
+                            </div>                            
+                        </div>                        
+                    </li>
+                    <?php } ?>
+                    <!-- END MESSAGES -->
+                    <!-- MESSAGES -->
+                    <?php
+                    if($count_new_mail == 0){echo "";}else{
+                    ?>
+                    <li class="xn-icon-button pull-right">
                         <a href="#"><span class="fa fa-comments"></span></a>
                         <div class="informer informer-success"><?php echo $count_new_mail; ?></div>
                         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><span class="fa fa-comments"></span> Messagerie Interne</h3>                                
+                                <h3 class="panel-title"><span class="fa fa-comments"></span> Chat</h3>                                
                                 <div class="pull-right">
-                                    <span class="label label-success"><?php echo $count_new_mail; ?> Nouveau Message</span>
+                                    <span class="label label-success"><?php echo $count_new_mail; ?> nouvelle discussion</span>
                                 </div>
                             </div>
                             <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">

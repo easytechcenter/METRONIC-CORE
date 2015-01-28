@@ -23,5 +23,6 @@ include ("/var/www/metronic/fonction/general.php");
         
         <!-- CSS INCLUDE -->        
         <link rel="stylesheet" type="text/css" id="theme" href="<?php echo SITE_URL,RACINE,ASSETS; ?>/css/theme-default.css"/>
-        <!-- EOF CSS INCLUDE -->                                    
+        <!-- EOF CSS INCLUDE --> 
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>                                  
     </head>

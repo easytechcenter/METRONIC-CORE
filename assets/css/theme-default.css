@@ -1369,7 +1369,7 @@ a.list-group-item:focus {
   background: #fea223;
 }
 .list-group-status.status-offline:after {
-  background: #CCC;
+  background: #FF0000;
 }
 /* END LIST GROUP CONTACTS */
 /* EOF LIST GROUP */

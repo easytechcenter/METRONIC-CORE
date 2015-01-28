@@ -38,13 +38,15 @@ $donnee_version = mysql_fetch_array($sql_version);
                         $sql = 'SELECT count(*) FROM utilisateur WHERE login="'.mysql_escape_string($_POST['login']).'"  AND pass="'.mysql_escape_string(md5($_POST['pass'])).'"';
                         $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
                         $data = mysql_fetch_array($req);
-                        mysql_free_result($req);
-                        mysql_close();
+                        $login = $_POST['login'];
+                        $sql_user = mysql_query("SELECT * FROM utilisateur WHERE login = '$login'")or die(mysql_error());
+                        $donnee_user = mysql_fetch_array($sql_user);
 
                         // si on obtient une réponse, alors l'utilisateur est un membre
                         if ($data[0] == 1) {
                             session_start();
                             $_SESSION['login'] = $_POST['login'];
+                            mysql_query("UPDATE utilisateur SET connect = '1' WHERE iduser =".$donnee_user['iduser'])or die(mysql_error());
                             header('Location: index.php');
                             exit();
                         }
