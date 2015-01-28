@@ -21,10 +21,14 @@ define("PAGE", "Boite Mail Interne"); // Nom de la Page
                     <li class="active"><?php echo PAGE; ?></li>
                 </ul>
                 <?php
-                $sql_count_new_mail = mysql_query("SELECT COUNT(idmessage) FROM messagerie WHERE etat_message = '0' AND destinataire = ".$donnees_login['iduser'])or die(mysql_error());
+                $sql_count_new_mail = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_reception WHERE etat_message = '0' AND boite_reception.destinataire = '$iduser'")or die(mysql_error());
                 $count_new_mail = mysql_result($sql_count_new_mail, 0);
-                $sql_count_mail_sent = mysql_query("SELECT COUNT(idmessage) FROM messagerie WHERE expediteur = ".$donnees_login['iduser'])or die(mysql_error());
+                $sql_count_mail = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_reception WHERE  boite_reception.destinataire = '$iduser'")or die(mysql_error());
+                $count_mail = mysql_result($sql_count_mail, 0);
+                $sql_count_mail_sent = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_envoie WHERE boite_envoie.expediteur = '$iduser'")or die(mysql_error());
                 $count_mail_sent = mysql_result($sql_count_mail_sent, 0);
+                $sql_count_mail_trash = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_corbeil WHERE boite_corbeil.destinataire = '$iduser'")or die(mysql_error());
+                $count_mail_trash = mysql_result($sql_count_mail_trash, 0);
                 ?>
                 <!-- END BREADCRUMB -->                
 
@@ -38,49 +42,20 @@ define("PAGE", "Boite Mail Interne"); // Nom de la Page
                             if($count_new_mail == 0){echo "<small>(0 Mail non lu)</small>";}else{echo "<small>(".$count_new_mail." Mail non lu)</small>";}
                             ?>
                             </h2>
-                        </div>                                                                                
-                        <?php
-                        if(isset($_GET['del-mail']) && $_GET['del-mail'] == 'Valider'){
-                            $idmessage = $_GET['idmessage'];
-
-                            $sql_del_message = mysql_query("DELETE FROM messagerie WHERE idmessage = '$idmessage'")or die(mysql_error());
-
-                            if($sql_del_message == TRUE){
-                            ?>
-                            <div role="alert" class="alert alert-success">
-                                <button data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                <i class="fa fa-check"></i> <strong>Succès!</strong> Le message à été supprimer.
-                            </div>
-                            <?php
-                            }else{
-                            ?>
-                            <div role="alert" class="alert alert-danger">
-                                <button data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                <i class="fa fa-times"></i> <strong>Erreur!</strong> Le message n'a pas été supprimer.
-                            </div>
-                            <?php
-                            }
-                        }
-                        ?>
-                        <?php
-                        if(isset($_GET['req']) && $_GET['req'] == 'true'){
-                        ?>
-                        <div role="alert" class="alert alert-success">
-                            <button data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                            <i class="fa fa-check"></i> <strong>Succès!</strong> Le message à été Envoyer.
-                        </div>
-                        <?php } ?>
-                        <?php
-                        if(isset($_GET['req']) && $_GET['req'] == 'false'){
-                        ?>
-                        <div role="alert" class="alert alert-danger">
-                            <button data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                            <i class="fa fa-times"></i> <strong>Erreur!</strong> Le message n'a pas été Envoyer.
-                        </div>
-                        <?php } ?>                    
+                        </div>                                                                                                   
                     </div>
                     <!-- END CONTENT FRAME TOP -->
-                    
+                    <?php
+                    if(isset($_GET['sent_mail']) && $_GET['sent_mail'] == 'true'){echo "<div class='alert alert-success' role='alert'><button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button><strong>SUCCES!</strong> Le mail à été envoyer.</div>";}
+                    if(isset($_GET['sent_mail']) && $_GET['sent_mail'] == 'false'){echo "<div class='alert alert-danger' role='alert'><button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button><strong>ERREUR!</strong> Le mail n'a pas été envoyer.</div>";}
+                    if(isset($_GET['trash_inbox']) && $_GET['trash_inbox'] == 'true'){echo "<div class='alert alert-success' role='alert'><button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button><strong>SUCCES!</strong> Le mail à été supprimer.</div>";}
+                    if(isset($_GET['trash_inbox']) && $_GET['trash_inbox'] == 'false'){echo "<div class='alert alert-danger' role='alert'><button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button><strong>ERREUR!</strong> Le mail n'a pas été Supprimer.</div>";}
+                    if(isset($_GET['sent_reply_mail']) && $_GET['sent_reply_mail'] == 'true'){echo "<div class='alert alert-success' role='alert'><button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button><strong>SUCCES!</strong> La réponse à été envoyer.</div>";}
+                    if(isset($_GET['sent_reply_mail']) && $_GET['sent_reply_mail'] == 'false'){echo "<div class='alert alert-success' role='alert'><button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button><strong>SUCCES!</strong> La réponse n'a pas été envoyer.</div>";}
+                    if(isset($_GET['del_mail']) && $_GET['del_mail'] == 'true'){echo "<div class='alert alert-success' role='alert'><button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button><strong>SUCCES!</strong> Le mail à été définitivement supprimer.</div>";}
+                    if(isset($_GET['del_mail']) && $_GET['del_mail'] == 'false'){echo "<div class='alert alert-success' role='alert'><button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button><strong>SUCCES!</strong> Le mail n'a pas été définitivement supprimer.</div>";}
+
+                    ?>
                     <!-- START CONTENT FRAME LEFT -->
                     <div class="content-frame-left">
                         <div class="block">
@@ -88,8 +63,9 @@ define("PAGE", "Boite Mail Interne"); // Nom de la Page
                         </div>
                         <div class="block">
                             <div class="list-group border-bottom">
-                                <a href="inbox.php" class="list-group-item active"><span class="fa fa-inbox"></span> Boite de Recéption <?php if($count_new_mail == 0){echo "";}else{echo "<span class='badge badge-warning'>".$count_new_mail."</span>";} ?></a>
-                                <a href="sentbox.php" class="list-group-item"><span class="fa fa-rocket"></span> Mail Envoyer <span class="badge badge-info"><?php echo $count_mail_sent; ?></span> </a>                            
+                                <a href="inbox.php" class="list-group-item active"><span class="fa fa-inbox"></span> Boite de Recéption <span class='badge badge-warning'><?php echo $count_mail; ?></span></a>
+                                <a href="sentbox.php" class="list-group-item"><span class="fa fa-rocket"></span> Mail Envoyer <span class="badge badge-info"><?php echo $count_mail_sent; ?></span> </a>  
+                                <a href="trash.php" class="list-group-item"><span class="fa fa-trash-o"></span> Corbeille <span class="badge badge-danger"><?php echo $count_mail_trash; ?></span></a>                           
                             </div>                        
                         </div>
                     </div>
@@ -101,12 +77,12 @@ define("PAGE", "Boite Mail Interne"); // Nom de la Page
                         <div class="panel panel-default">
                             <div class="panel-body mail">
                             <?php
-                            $sql_mail = mysql_query("SELECT * FROM messagerie, utilisateur WHERE messagerie.expediteur = utilisateur.iduser AND destinataire = ".$donnees_login['iduser'])or die(mysql_error());
+                            $sql_mail = mysql_query("SELECT * FROM messagerie, boite_reception, utilisateur WHERE boite_reception.expediteur = utilisateur.iduser AND boite_reception.expediteur = '$iduser' ORDER BY messagerie.idmessage DESC")or die(mysql_error());
                             while($donnee_mail = mysql_fetch_array($sql_mail)){
                             ?>
                                <div class="mail-item <?php if($donnee_mail['etat_message'] == 0){echo 'mail-unread';} ?>">
                                     <div class="mail-checkbox">
-                                        <a href="inbox.php?del-mail=Valider&idmessage=<?php echo $donnee_mail['idmessage']; ?>" style="color: red;"><i class="fa fa-times"></i></a>
+                                        <a href="<?php echo SITE_URL,RACINE;?>fonction/mail.php?idmessage=<?php echo $donnee_mail['idmessage']; ?>&trash_inbox=Valider" style="color: red;"><i class="fa fa-times"></i></a>
                                     </div>
                                     <?php
                                     if($donnee_mail['importance'] == 1){
@@ -116,7 +92,7 @@ define("PAGE", "Boite Mail Interne"); // Nom de la Page
                                     </div>
                                     <?php } ?>
                                     <div class="mail-user"><?php echo $donnee_mail['nom_user']; ?> <?php echo $donnee_mail['prenom_user']; ?></div>                                    
-                                    <a href="view.php?idmessage=<?php echo $donnee_mail['idmessage']; ?>" class="mail-text"><?php echo $donnee_mail['objet']; ?></a>
+                                    <a href="view_inbox.php?idmessage=<?php echo $donnee_mail['idmessage']; ?>" class="mail-text"><?php echo $donnee_mail['objet']; ?></a>
                                     <div class="mail-date">
                                         <?php
                                         if($donnee_mail['date_message'] == $date){echo "Aujourd'hui,".$donnee_mail['heure_message'];}else{echo $donnee_mail['date_message'].",".$donnee_mail['heure_message'];}

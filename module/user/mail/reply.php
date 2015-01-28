@@ -1,6 +1,6 @@
 <?php
 include ('../../../inc/header.php'); 
-define("PAGE", "COmposer un Mail"); // Nom de la Page
+define("PAGE", "Répondre à un mail"); // Nom de la Page
 ?>
     <body>
         <!-- START PAGE CONTAINER -->
@@ -30,6 +30,10 @@ define("PAGE", "COmposer un Mail"); // Nom de la Page
                 $count_mail_sent = mysql_result($sql_count_mail_sent, 0);
                 $sql_count_mail_trash = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_corbeil WHERE boite_corbeil.destinataire = '$iduser'")or die(mysql_error());
                 $count_mail_trash = mysql_result($sql_count_mail_trash, 0);
+
+                $idmessage = $_GET['idmessage'];
+                $sql_message = mysql_query("SELECT * FROM messagerie, boite_reception, utilisateur WHERE boite_reception.expediteur = utilisateur.iduser AND messagerie.idmessage = '$idmessage'")or die(mysql_error());
+                $donnee_message = mysql_fetch_array($sql_message);
                 ?>
                 <!-- END BREADCRUMB -->                
 
@@ -38,7 +42,7 @@ define("PAGE", "COmposer un Mail"); // Nom de la Page
                     <!-- START CONTENT FRAME TOP -->
                     <div class="content-frame-top">                        
                         <div class="page-title">                    
-                            <h2><span class="fa fa-inbox"></span> Composition d'un Mail</h2>
+                            <h2><span class="fa fa-inbox"></span> Réponse au Mail</h2>
                         </div>                                                                                                    
                     </div>
                     <!-- END CONTENT FRAME TOP -->
@@ -49,7 +53,7 @@ define("PAGE", "COmposer un Mail"); // Nom de la Page
                             <div class="list-group border-bottom">
                                 <a href="inbox.php" class="list-group-item active"><span class="fa fa-inbox"></span> Boite de Recéption <span class='badge badge-warning'><?php echo $count_mail; ?></span></a>
                                 <a href="sentbox.php" class="list-group-item"><span class="fa fa-rocket"></span> Mail Envoyer <span class="badge badge-info"><?php echo $count_mail_sent; ?></span> </a>
-                                <a href="trash.php" class="list-group-item"><span class="fa fa-trash-o"></span> Corbeille <span class="badge badge-danger"><?php echo $count_mail_trash; ?></span></a>                             
+                                <a href="trash.php" class="list-group-item"><span class="fa fa-trash-o"></span> Corbeille <span class="badge badge-danger"><?php echo $count_mail_trash; ?></span></a>                            
                             </div>                        
                         </div>
                     </div>
@@ -60,41 +64,30 @@ define("PAGE", "COmposer un Mail"); // Nom de la Page
                         <div class="block">
                             <form role="form" class="form-horizontal" action="<?php echo SITE_URL,RACINE; ?>fonction/mail.php" method="POST">
                             <input type="hidden" name="expediteur" value="<?php echo $donnees_login['iduser']; ?>" />
+                            <input type="hidden" name="destinataire" value="<?php echo $donnee_message['expediteur']; ?>"/>
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="pull-right">
-                                            <button type="submit" class="btn btn-danger" name="sent-mail" value="Valider"><span class="fa fa-envelope"></span> Envoyer le message</button>
+                                            <button type="submit" class="btn btn-danger" name="sent-reply-mail" value="Valider"><span class="fa fa-envelope"></span> Envoyer le message</button>
                                         </div>                                    
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">Expediteur:</label>
-                                    <div class="col-md-10">
-                                        <p class="form-control-static"><?php echo $donnees_login['nom_user']; ?> <?php echo $donnees_login['prenom_user']; ?></p>
                                     </div>
                                 </div>                        
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">Destinataire</label>
-                                    <div class="col-md-10">                                                                                
-                                        <select class="form-control select" data-live-search="true" name="destinataire">
-                                        <?php
-                                        $sql_user = mysql_query("SELECT * FROM utilisateur WHERE iduser !=".$donnees_login['iduser'])or die(mysql_error());
-                                        while($donnee_user = mysql_fetch_array($sql_user)){
-                                        ?>
-                                            <option value="<?php echo $donnee_user['iduser']; ?>"><?php echo $donnee_user['nom_user']; ?> <?php echo $donnee_user['prenom_user']; ?></option>
-                                        <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label class="col-md-2 control-label">Objet:</label>
                                     <div class="col-md-10">                                        
-                                        <input type="text" class="form-control" name="objet"/>                                
+                                        <input type="text" class="form-control" name="objet" value="RE: <?php echo $donnee_message['objet']; ?>" />                                
                                     </div>                                
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">                            
-                                        <textarea class="summernote_email" name="corps_message">                                        
+                                    <label class="col-md-2 control-label">Message Précédent:</label>
+                                    <div class="col-md-10">
+                                        <textarea rows="5" class="form-control" name="message_prec"><?php echo $donnee_message['corps_message']; ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Votre Réponse:</label>
+                                    <div class="col-md-10">                            
+                                        <textarea class="summernote_email" name="corps_message">
                                         </textarea>                            
                                     </div>
                                 </div>
@@ -110,7 +103,7 @@ define("PAGE", "COmposer un Mail"); // Nom de la Page
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="pull-right">
-                                            <button type="submit" class="btn btn-danger btn-lg" name="sent-mail" value="Valider"><span class="fa fa-envelope"></span> Envoyer le message</button>
+                                            <button type="submit" class="btn btn-danger btn-lg" name="sent-reply-mail" value="Valider"><span class="fa fa-envelope"></span> Envoyer le message</button>
                                         </div>                                    
                                     </div>
                                 </div>

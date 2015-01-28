@@ -1,6 +1,6 @@
 <?php
 include ('../../../inc/header.php'); 
-define("PAGE", "COmposer un Mail"); // Nom de la Page
+define("PAGE", "Message"); // Nom de la Page
 ?>
     <body>
         <!-- START PAGE CONTAINER -->
@@ -17,8 +17,7 @@ define("PAGE", "COmposer un Mail"); // Nom de la Page
                 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#"><?php echo LOGICIEL; ?></a></li>
-                    <li><a href="#">Boite Mail Interne</a></li>                    
+                    <li><a href="#"><?php echo LOGICIEL; ?></a></li>                    
                     <li class="active"><?php echo PAGE; ?></li>
                 </ul>
                 <?php
@@ -30,6 +29,13 @@ define("PAGE", "COmposer un Mail"); // Nom de la Page
                 $count_mail_sent = mysql_result($sql_count_mail_sent, 0);
                 $sql_count_mail_trash = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_corbeil WHERE boite_corbeil.destinataire = '$iduser'")or die(mysql_error());
                 $count_mail_trash = mysql_result($sql_count_mail_trash, 0);
+
+
+                $idmessage = $_GET['idmessage'];
+                $sql_message = mysql_query("SELECT * FROM messagerie, boite_reception, utilisateur WHERE boite_reception.expediteur = utilisateur.iduser AND messagerie.idmessage = '$idmessage'")or die(mysql_error());
+                $donnee_message = mysql_fetch_array($sql_message);
+                $sql_up_etat = mysql_query("UPDATE messagerie SET etat_message = '1' WHERE idmessage = '$idmessage'")or die(mysql_error());
+
                 ?>
                 <!-- END BREADCRUMB -->                
 
@@ -38,18 +44,26 @@ define("PAGE", "COmposer un Mail"); // Nom de la Page
                     <!-- START CONTENT FRAME TOP -->
                     <div class="content-frame-top">                        
                         <div class="page-title">                    
-                            <h2><span class="fa fa-inbox"></span> Composition d'un Mail</h2>
-                        </div>                                                                                                    
+                            <h2><span class="fa fa-file-text"></span> Message</h2>
+                        </div>                                                                                
+                        
+                        <div class="pull-right">                                                                                    
+                            <button class="btn btn-default" onclick="javascript:window.print()"><span class="fa fa-print"></span> Imprimer</button>
+                            <button class="btn btn-default content-frame-left-toggle"><span class="fa fa-bars"></span></button>
+                        </div>                        
                     </div>
                     <!-- END CONTENT FRAME TOP -->
                     
                     <!-- START CONTENT FRAME LEFT -->
                     <div class="content-frame-left">
                         <div class="block">
+                            <a href="compose.php" class="btn btn-danger btn-block btn-lg"><span class="fa fa-edit"></span> Nouveau Mail</a>
+                        </div>
+                        <div class="block">
                             <div class="list-group border-bottom">
                                 <a href="inbox.php" class="list-group-item active"><span class="fa fa-inbox"></span> Boite de Recéption <span class='badge badge-warning'><?php echo $count_mail; ?></span></a>
                                 <a href="sentbox.php" class="list-group-item"><span class="fa fa-rocket"></span> Mail Envoyer <span class="badge badge-info"><?php echo $count_mail_sent; ?></span> </a>
-                                <a href="trash.php" class="list-group-item"><span class="fa fa-trash-o"></span> Corbeille <span class="badge badge-danger"><?php echo $count_mail_trash; ?></span></a>                             
+                                <a href="trash.php" class="list-group-item"><span class="fa fa-trash-o"></span> Corbeille <span class="badge badge-danger"><?php echo $count_mail_trash; ?></span></a>                            
                             </div>                        
                         </div>
                     </div>
@@ -57,64 +71,23 @@ define("PAGE", "COmposer un Mail"); // Nom de la Page
                     
                     <!-- START CONTENT FRAME BODY -->
                     <div class="content-frame-body">
-                        <div class="block">
-                            <form role="form" class="form-horizontal" action="<?php echo SITE_URL,RACINE; ?>fonction/mail.php" method="POST">
-                            <input type="hidden" name="expediteur" value="<?php echo $donnees_login['iduser']; ?>" />
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div class="pull-right">
-                                            <button type="submit" class="btn btn-danger" name="sent-mail" value="Valider"><span class="fa fa-envelope"></span> Envoyer le message</button>
-                                        </div>                                    
-                                    </div>
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="pull-left">
+                                    <img src="<?php echo SITE_URL, RACINE; ?>assets/img/user/<?php echo $donnee_message['login']; ?>.png" class="panel-title-image" alt="John Doe"/>
+                                    <h3 class="panel-title"><?php echo $donnee_message['nom_user']; ?> <?php echo $donnee_message['prenom_user']; ?> <small><?php echo $donnee_message['poste']; ?></small></h3>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">Expediteur:</label>
-                                    <div class="col-md-10">
-                                        <p class="form-control-static"><?php echo $donnees_login['nom_user']; ?> <?php echo $donnees_login['prenom_user']; ?></p>
-                                    </div>
-                                </div>                        
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">Destinataire</label>
-                                    <div class="col-md-10">                                                                                
-                                        <select class="form-control select" data-live-search="true" name="destinataire">
-                                        <?php
-                                        $sql_user = mysql_query("SELECT * FROM utilisateur WHERE iduser !=".$donnees_login['iduser'])or die(mysql_error());
-                                        while($donnee_user = mysql_fetch_array($sql_user)){
-                                        ?>
-                                            <option value="<?php echo $donnee_user['iduser']; ?>"><?php echo $donnee_user['nom_user']; ?> <?php echo $donnee_user['prenom_user']; ?></option>
-                                        <?php } ?>
-                                        </select>
-                                    </div>
+                                <div class="pull-right">
+                                    <a class="btn btn-default" href="reply.php?idmessage=<?php echo $donnee_message['idmessage']; ?>"><span class="fa fa-mail-reply"></span></a>
+                                    <a class="btn btn-default" href="inbox.php?del-mail=Valider"><span class="fa fa-trash-o"></span></a>                                    
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">Objet:</label>
-                                    <div class="col-md-10">                                        
-                                        <input type="text" class="form-control" name="objet"/>                                
-                                    </div>                                
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12">                            
-                                        <textarea class="summernote_email" name="corps_message">                                        
-                                        </textarea>                            
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">Ce message à-t-il une Importance:</label>
-                                    <div class="col-md-5">
-                                        <label class="check"><input type="radio" class="iradio" name="importance" value="0"/> Non</label>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label class="check"><input type="radio" class="iradio" name="importance" value="1" /> Oui</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div class="pull-right">
-                                            <button type="submit" class="btn btn-danger btn-lg" name="sent-mail" value="Valider"><span class="fa fa-envelope"></span> Envoyer le message</button>
-                                        </div>                                    
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
+                            <div class="panel-body">
+                                <h3><?php echo $donnee_message['objet']; ?> <small class="pull-right text-muted"><span class="fa fa-clock-o"></span> <?php if($donnee_message['date_message'] == $date){echo "Aujourd'hui,".$donnee_message['heure_message'];}else{echo $donnee_message['date_message'].",".$donnee_message['heure_message'];} ?></small></h3>
+                                <?php echo html_entity_decode($donnee_message['corps_message']); ?>      
+                                
+                            </div>
                         </div>
                     </div>
                     <!-- END CONTENT FRAME BODY -->
@@ -161,10 +134,7 @@ define("PAGE", "COmposer un Mail"); // Nom de la Page
         <script type='text/javascript' src='<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/icheck/icheck.min.js'></script>
         <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
         
-        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/summernote/summernote.js"></script>
-        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/tagsinput/jquery.tagsinput.min.js"></script>       
-        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/bootstrap/bootstrap-select.js"></script>        
-        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/bootstrap/bootstrap-file-input.js"></script>
+        <script type="text/javascript" src="<?php echo SITE_URL,RACINE,ASSETS; ?>js/plugins/bootstrap/bootstrap-datepicker.js"></script> 
         <!-- END PAGE PLUGINS -->         
 
         <!-- START TEMPLATE -->
