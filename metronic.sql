@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 27 Janvier 2015 à 21:42
+-- Généré le: Mer 28 Janvier 2015 à 01:42
 -- Version du serveur: 5.5.37-0ubuntu0.13.10.1
 -- Version de PHP: 5.5.3-1ubuntu2.6
 
@@ -39,6 +39,22 @@ CREATE TABLE IF NOT EXISTS `cat_module` (
 INSERT INTO `cat_module` (`idcatmodule`, `libelle_cat_module`) VALUES
 (1, 'G&eacute;n&eacute;ral'),
 (2, 'Gestion Commercial\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `chat`
+--
+
+CREATE TABLE IF NOT EXISTS `chat` (
+  `idchat` int(13) NOT NULL AUTO_INCREMENT,
+  `expediteur` int(13) NOT NULL,
+  `destinataire` int(13) NOT NULL,
+  `message` longtext NOT NULL,
+  `date_chat` varchar(255) NOT NULL,
+  `heure_chat` varchar(255) NOT NULL,
+  PRIMARY KEY (`idchat`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1526,6 +1542,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `nom_user` varchar(255) NOT NULL,
   `prenom_user` varchar(255) NOT NULL,
   `poste` varchar(255) NOT NULL,
+  `connect` int(1) NOT NULL,
   PRIMARY KEY (`iduser`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -1533,9 +1550,9 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 -- Contenu de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`iduser`, `login`, `pass`, `nom_user`, `prenom_user`, `poste`) VALUES
-(1, 'mmockelyn', '25f9e794323b453885f5181f1b624d0b', 'MOCKELYN', 'Maxime', 'Webmaster'),
-(3, 'dthomas', '25f9e794323b453885f5181f1b624d0b', 'THOMAS', 'Dominique', 'CDT GESTION SAS');
+INSERT INTO `utilisateur` (`iduser`, `login`, `pass`, `nom_user`, `prenom_user`, `poste`, `connect`) VALUES
+(1, 'mmockelyn', '25f9e794323b453885f5181f1b624d0b', 'MOCKELYN', 'Maxime', 'Webmaster', 1),
+(3, 'dthomas', '25f9e794323b453885f5181f1b624d0b', 'THOMAS', 'Dominique', 'CDT GESTION SAS', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
