@@ -21,13 +21,13 @@ define("PAGE", "Boite Mail Interne"); // Nom de la Page
                     <li class="active"><?php echo PAGE; ?></li>
                 </ul>
                 <?php
-                $sql_count_new_mail = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_reception WHERE etat_message = '0' AND boite_reception.destinataire = '$iduser'")or die(mysql_error());
+                $sql_count_new_mail = mysql_query("SELECT COUNT(idboitereception) FROM boite_reception WHERE etat_message = '0' AND boite_reception.destinataire = '$iduser'")or die(mysql_error());
                 $count_new_mail = mysql_result($sql_count_new_mail, 0);
-                $sql_count_mail = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_reception WHERE  boite_reception.destinataire = '$iduser'")or die(mysql_error());
+                $sql_count_mail = mysql_query("SELECT COUNT(idboitereception) FROM boite_reception WHERE  boite_reception.destinataire = '$iduser'")or die(mysql_error());
                 $count_mail = mysql_result($sql_count_mail, 0);
-                $sql_count_mail_sent = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_envoie WHERE boite_envoie.expediteur = '$iduser'")or die(mysql_error());
+                $sql_count_mail_sent = mysql_query("SELECT COUNT(idboiteenvoie) FROM boite_envoie WHERE boite_envoie.expediteur = '$iduser'")or die(mysql_error());
                 $count_mail_sent = mysql_result($sql_count_mail_sent, 0);
-                $sql_count_mail_trash = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_corbeil WHERE boite_corbeil.destinataire = '$iduser'")or die(mysql_error());
+                $sql_count_mail_trash = mysql_query("SELECT COUNT(idboitecorbeil) FROM boite_corbeil WHERE boite_corbeil.destinataire = '$iduser'")or die(mysql_error());
                 $count_mail_trash = mysql_result($sql_count_mail_trash, 0);
                 ?>
                 <!-- END BREADCRUMB -->                
@@ -66,12 +66,14 @@ define("PAGE", "Boite Mail Interne"); // Nom de la Page
                         <div class="panel panel-default">
                             <div class="panel-body mail">
                             <?php
-                            $sql_mail = mysql_query("SELECT * FROM messagerie, boite_envoie, utilisateur WHERE boite_envoie.destinataire = utilisateur.iduser AND boite_envoie.expediteur = '$iduser' ORDER BY messagerie.idmessage DESC")or die(mysql_error());
+                            $sql_mail = mysql_query("SELECT * FROM boite_envoie, utilisateur WHERE boite_envoie.destinataire = utilisateur.iduser  
+                                AND boite_envoie.expediteur = '$iduser' 
+                                ORDER BY idboiteenvoie DESC")or die(mysql_error());
                             while($donnee_mail = mysql_fetch_array($sql_mail)){
                             ?>
                                <div class="mail-item">
                                     <div class="mail-checkbox">
-                                        <a href="<?php echo SITE_URL,RACINE;?>fonction/mail.php?idmessage=<?php echo $donnee_mail['idmessage']; ?>&trash_sentbox=Valider" style="color: red;"><i class="fa fa-times"></i></a>
+                                        <a href="<?php echo SITE_URL,RACINE;?>fonction/mail.php?idboiteenvoie=<?php echo $donnee_mail['idboiteenvoie']; ?>&trash_sentbox=Valider" style="color: red;"><i class="fa fa-times"></i></a>
                                     </div>
                                     <?php
                                     if($donnee_mail['importance'] == 1){
@@ -81,7 +83,7 @@ define("PAGE", "Boite Mail Interne"); // Nom de la Page
                                     </div>
                                     <?php } ?>
                                     <div class="mail-user"><?php echo $donnee_mail['nom_user']; ?> <?php echo $donnee_mail['prenom_user']; ?></div>                                    
-                                    <a href="view_sentbox.php?idmessage=<?php echo $donnee_mail['idmessage']; ?>" class="mail-text"><?php echo $donnee_mail['objet']; ?></a>
+                                    <a href="view_sentbox.php?idboiteenvoie=<?php echo $donnee_mail['idboiteenvoie']; ?>" class="mail-text"><?php echo $donnee_mail['objet']; ?></a>
                                     <div class="mail-date">
                                         <?php
                                         if($donnee_mail['date_message'] == $date){echo "Aujourd'hui,".$donnee_mail['heure_message'];}else{echo $donnee_mail['date_message'].",".$donnee_mail['heure_message'];}

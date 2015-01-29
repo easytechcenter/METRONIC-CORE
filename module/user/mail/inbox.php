@@ -21,13 +21,13 @@ define("PAGE", "Boite Mail Interne"); // Nom de la Page
                     <li class="active"><?php echo PAGE; ?></li>
                 </ul>
                 <?php
-                $sql_count_new_mail = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_reception WHERE etat_message = '0' AND boite_reception.destinataire = '$iduser'")or die(mysql_error());
+                $sql_count_new_mail = mysql_query("SELECT COUNT(idboitereception) FROM boite_reception WHERE etat_message = '0' AND destinataire = '$iduser'")or die(mysql_error());
                 $count_new_mail = mysql_result($sql_count_new_mail, 0);
-                $sql_count_mail = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_reception WHERE  boite_reception.destinataire = '$iduser'")or die(mysql_error());
+                $sql_count_mail = mysql_query("SELECT COUNT(idboitereception) FROM  boite_reception WHERE  destinataire = '$iduser'")or die(mysql_error());
                 $count_mail = mysql_result($sql_count_mail, 0);
-                $sql_count_mail_sent = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_envoie WHERE boite_envoie.expediteur = '$iduser'")or die(mysql_error());
+                $sql_count_mail_sent = mysql_query("SELECT COUNT(idboiteenvoie) FROM  boite_envoie WHERE expediteur = '$iduser'")or die(mysql_error());
                 $count_mail_sent = mysql_result($sql_count_mail_sent, 0);
-                $sql_count_mail_trash = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_corbeil WHERE boite_corbeil.destinataire = '$iduser'")or die(mysql_error());
+                $sql_count_mail_trash = mysql_query("SELECT COUNT(idboitecorbeil) FROM boite_corbeil WHERE destinataire = '$iduser'")or die(mysql_error());
                 $count_mail_trash = mysql_result($sql_count_mail_trash, 0);
                 ?>
                 <!-- END BREADCRUMB -->                
@@ -77,7 +77,9 @@ define("PAGE", "Boite Mail Interne"); // Nom de la Page
                         <div class="panel panel-default">
                             <div class="panel-body mail">
                             <?php
-                            $sql_mail = mysql_query("SELECT * FROM messagerie, boite_reception, utilisateur WHERE boite_reception.expediteur = utilisateur.iduser AND boite_reception.expediteur = '$iduser' ORDER BY messagerie.idmessage DESC")or die(mysql_error());
+                            $sql_mail = mysql_query("SELECT * FROM boite_reception, utilisateur WHERE boite_reception.expediteur = utilisateur.iduser
+                            	AND boite_reception.destinataire = '$iduser' 
+                            	ORDER BY idboitereception DESC")or die(mysql_error());
                             while($donnee_mail = mysql_fetch_array($sql_mail)){
                             ?>
                                <div class="mail-item <?php if($donnee_mail['etat_message'] == 0){echo 'mail-unread';} ?>">

@@ -63,7 +63,7 @@ define("PAGE", "Corbeille"); // Nom de la Page
                         <div class="panel panel-default">
                             <div class="panel-body mail">
                             <?php
-                            $sql_mail = mysql_query("SELECT * FROM messagerie, boite_corbeil, utilisateur WHERE boite_corbeil.destinataire = utilisateur.iduser AND boite_corbeil.expediteur = '$iduser' ORDER BY messagerie.idmessage DESC")or die(mysql_error());
+                            $sql_mail = mysql_query("SELECT * FROM messagerie, boite_corbeil, utilisateur WHERE boite_corbeil.destinataire = utilisateur.iduser AND boite_corbeil.idmessage = messagerie.idmessage AND boite_corbeil.expediteur = '$iduser' ORDER BY messagerie.idmessage DESC")or die(mysql_error());
                             while($donnee_mail = mysql_fetch_array($sql_mail)){
                             ?>
                                <div class="mail-item">

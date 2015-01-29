@@ -11,10 +11,8 @@
                     </li> 
                     <!-- END SIGN OUT -->
                     <?php
-                    $sql_count_new_mail = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_reception WHERE etat_message = '0' AND boite_reception.destinataire = '$iduser'")or die(mysql_error());
+                    $sql_count_new_mail = mysql_query("SELECT COUNT(idboitereception) FROM  boite_reception WHERE etat_message = '0' AND destinataire = '$iduser'")or die(mysql_error());
                     $count_new_mail = mysql_result($sql_count_new_mail, 0);
-                    $sql_count_mail_sent = mysql_query("SELECT COUNT(messagerie.idmessage) FROM messagerie, boite_envoie WHERE boite_envoie.expediteur = '$iduser'")or die(mysql_error());
-                    $count_mail_sent = mysql_result($sql_count_mail_sent, 0);
                     ?>
                     <!-- MESSAGES -->
                     <?php
@@ -32,7 +30,7 @@
                             </div>
                             <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
                             <?php
-                            $sql_mail = mysql_query("SELECT * FROM messagerie, boite_reception, utilisateur WHERE boite_reception.expediteur = utilisateur.iduser AND boite_reception.destinataire = '$iduser'")or die(mysql_error());
+                            $sql_mail = mysql_query("SELECT * FROM boite_reception, utilisateur WHERE boite_reception.expediteur = utilisateur.iduser AND boite_reception.destinataire = '$iduser'")or die(mysql_error());
                             while($donnee_mail = mysql_fetch_array($sql_mail)){
                             ?>
                                 <a href="#" class="list-group-item">
