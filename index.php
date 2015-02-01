@@ -7,7 +7,7 @@ $li_int1 = "";
 $li_int2 = "";
 $li_int3 = "";
 $li_int4 = "";
-$li_end = "<li class='active'>Starter</li>";
+$li_end = "<li class='active'>Bienvenue</li>";
 ?>
 
     <!-- START Body -->

@@ -1,9 +1,20 @@
 <?php
+session_start();
+if (!isset($_SESSION['login'])) {
+header ('Location: http://panel.icegest.com/login.php');
+exit();
+}
+?>
+<?php
 include ('db.conf.php');
 include ('define.php');
+include ('error.php')^;
 if(MAINTENANCE == '1'){
     header("Location: maintenance.php");
 }
+//Info utilisateur
+$result = mysql_query("SELECT iduser,login, nom_user, prenom_user, poste FROM utilisateur WHERE login = '".$_SESSION['login']. "'") or die(mysql_error());
+$donnees_login = mysql_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <!-- 
