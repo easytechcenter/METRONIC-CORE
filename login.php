@@ -1,6 +1,7 @@
 <?php
 include ('config/db.conf.php');
 include ('config/define.php');
+include ('config/error.php');
 ?>
 <!DOCTYPE html>
 <!-- 
