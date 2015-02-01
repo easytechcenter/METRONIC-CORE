@@ -129,11 +129,11 @@ LAST UPDATE: 2015/01/05
                                 </div>
                                 <div class="form-group">
                                     <div class="form-stack has-icon pull-left">
-                                        <input name="username" type="text" class="form-control input-lg" placeholder="Username / email" data-parsley-errors-container="#error-container" data-parsley-error-message="Please fill in your username / email" data-parsley-required>
+                                        <input name="login" type="text" class="form-control input-lg" placeholder="Username / email" data-parsley-errors-container="#error-container" data-parsley-error-message="Please fill in your username / email" data-parsley-required>
                                         <i class="ico-user2 form-control-icon"></i>
                                     </div>
                                     <div class="form-stack has-icon pull-left">
-                                        <input name="password" type="password" class="form-control input-lg" placeholder="Password" data-parsley-errors-container="#error-container" data-parsley-error-message="Please fill in your password" data-parsley-required>
+                                        <input name="pass" type="password" class="form-control input-lg" placeholder="Password" data-parsley-errors-container="#error-container" data-parsley-error-message="Please fill in your password" data-parsley-required>
                                         <i class="ico-lock2 form-control-icon"></i>
                                     </div>
                                 </div>
