@@ -1,12 +1,13 @@
 <?php 
 include ('config/header.php');
+$titre_page = "";
 //bread
 $li_start = "<li><a href='#''>".LOGICIEL."</a></li>";
 $li_int1 = "";
 $li_int2 = "";
 $li_int3 = "";
 $li_int4 = "";
-$li_end = "";
+$li_end = "<li class='active'>Starter</li>";
 ?>
 
     <!-- START Body -->
@@ -27,14 +28,18 @@ $li_end = "";
                 <!-- Page Header -->
                 <div class="page-header page-header-block">
                     <div class="page-header-section">
-                        <h4 class="title semibold">Blank / starter</h4>
+                        <h4 class="title semibold"><?php echo $titre_page; ?></h4>
                     </div>
                     <div class="page-header-section">
                         <!-- Toolbar -->
                         <div class="toolbar">
                             <ol class="breadcrumb breadcrumb-transparent nm">
-                                <li><a href="#">Page</a></li>
-                                <li class="active">Starter</li>
+                                <?php echo $li_start; ?>
+                                <?php if(empty($li_int1)){echo "";}else{echo $li_int1;} ?>
+                                <?php if(empty($li_int2)){echo "";}else{echo $li_int2;} ?>
+                                <?php if(empty($li_int3)){echo "";}else{echo $li_int3;} ?>
+                                <?php if(empty($li_int4)){echo "";}else{echo $li_int4;} ?>
+                                <?php echo $li_end; ?>
                             </ol>
                         </div>
                         <!--/ Toolbar -->
