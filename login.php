@@ -61,7 +61,7 @@ LAST UPDATE: 2015/01/05
                 if ((isset($_POST['login']) && !empty($_POST['login'])) && (isset($_POST['pass']) && !empty($_POST['pass']))) {
 
                     // on teste si une entrée de la base contient ce couple login / pass
-                    $sql = 'SELECT count(*) FROM utilisateur WHERE login="'.mysql_escape_string($_POST['login']).'"  AND pass_md5="'.mysql_escape_string(md5($_POST['pass'])).'"';
+                    $sql = 'SELECT count(*) FROM utilisateur WHERE login="'.mysql_escape_string($_POST['login']).'"  AND pass="'.mysql_escape_string(md5($_POST['pass'])).'"';
                     $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
                     $data = mysql_fetch_array($req);
                     mysql_free_result($req);
