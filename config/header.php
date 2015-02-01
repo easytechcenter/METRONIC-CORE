@@ -40,9 +40,9 @@ LAST UPDATE: 2015/01/05
         <!--/ Plugins stylesheet : optional -->
 
         <!-- Application stylesheet : mandatory -->
-        <link rel="stylesheet" href="<?php echo SITE_URL, RACINE, STYLE; ?>stylesheet/bootstrap.css">
-        <link rel="stylesheet" href="<?php echo SITE_URL, RACINE, STYLE; ?>stylesheet/layout.css">
-        <link rel="stylesheet" href="<?php echo SITE_URL, RACINE, STYLE; ?>stylesheet/uielement.css">
+        <link rel="stylesheet" href="<?php echo SITE_URL, RACINE, STYLE; ?>css/bootstrap.css">
+        <link rel="stylesheet" href="<?php echo SITE_URL, RACINE, STYLE; ?>css/layout.css">
+        <link rel="stylesheet" href="<?php echo SITE_URL, RACINE, STYLE; ?>css/uielement.css">
         <!--/ Application stylesheet -->
 
         <!-- Theme stylesheet : optional -->
