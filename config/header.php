@@ -1,14 +1,14 @@
 <?php
 session_start();
+include ('db.conf.php');
+include ('define.php');
+include ('error.php');
 if (!isset($_SESSION['login'])) {
-header ('Location:'.SITE_URL.''.RACINE.'/login.php');
+header ('Location:'.SITE_URL.''.RACINE.'login.php');
 exit();
 }
 ?>
 <?php
-include ('db.conf.php');
-include ('define.php');
-include ('error.php');
 if(MAINTENANCE == '1'){
     header("Location: maintenance.php");
 }
