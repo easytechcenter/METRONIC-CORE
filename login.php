@@ -108,7 +108,7 @@ LAST UPDATE: 2015/01/05
                         <hr><!-- horizontal line -->
 
                         <!-- Login form -->
-                        <form class="panel" name="form-login" action="">
+                        <form class="panel" name="form-login" action="login.php" method="POST">
                             <div class="panel-body">
                                 <!-- Alert message -->
                                 <div class="alert alert-warning">
@@ -155,7 +155,7 @@ LAST UPDATE: 2015/01/05
                                     </div>
                                 </div>
                                 <div class="form-group nm">
-                                    <button type="submit" class="btn btn-block btn-success"><span class="semibold">Sign In</span></button>
+                                    <button type="submit" class="btn btn-block btn-success" name="connexion" value="Connexion"><span class="semibold">Sign In</span></button>
                                 </div>
                             </div>
                         </form>
