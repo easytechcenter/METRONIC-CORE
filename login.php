@@ -112,9 +112,13 @@ LAST UPDATE: 2015/01/05
                         <form class="panel" name="form-login" action="login.php" method="POST">
                             <div class="panel-body">
                                 <!-- Alert message -->
+                                <?php
+                                if(empty($erreur)){echo "";}else{
+                                ?>
                                 <div class="alert alert-warning">
                                     <span class="ico-warning-sign" style="color: orange"></span> <?php echo $erreur; ?>
                                 </div>
+                                <?php } ?>
                                 <!--/ Alert message -->
                                 <div class="form-group">
                                     <select class="form-control" name="lang">
