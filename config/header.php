@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['login'])) {
-header ('Location: http://panel.icegest.com/login.php');
+header ('Location:'.SITE_URL.''.RACINE.'/login.php');
 exit();
 }
 ?>
