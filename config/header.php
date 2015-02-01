@@ -28,11 +28,11 @@ LAST UPDATE: 2015/01/05
         <meta name="description" content="Adminre is a clean and flat backend and frontend theme build with twitter bootstrap">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../image/touch/apple-touch-icon-144x144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../image/touch/apple-touch-icon-114x114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../image/touch/apple-touch-icon-72x72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="../image/touch/apple-touch-icon-57x57-precomposed.png">
-        <link rel="shortcut icon" href="../image/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo SITE_URL, RACINE, STYLE; ?>/images/touch/apple-touch-icon-144x144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo SITE_URL, RACINE, STYLE; ?>/images/touch/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo SITE_URL, RACINE, STYLE; ?>/images/touch/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="<?php echo SITE_URL, RACINE, STYLE; ?>/images/touch/apple-touch-icon-57x57-precomposed.png">
+        <link rel="shortcut icon" href="<?php echo SITE_URL, RACINE, STYLE; ?>/images/favicon.ico">
         <!--/ END META SECTION -->
 
         <!-- START STYLESHEETS -->
@@ -40,16 +40,16 @@ LAST UPDATE: 2015/01/05
         <!--/ Plugins stylesheet : optional -->
 
         <!-- Application stylesheet : mandatory -->
-        <link rel="stylesheet" href="../stylesheet/bootstrap.css">
-        <link rel="stylesheet" href="../stylesheet/layout.css">
-        <link rel="stylesheet" href="../stylesheet/uielement.css">
+        <link rel="stylesheet" href="<?php echo SITE_URL, RACINE, STYLE; ?>stylesheet/bootstrap.css">
+        <link rel="stylesheet" href="<?php echo SITE_URL, RACINE, STYLE; ?>stylesheet/layout.css">
+        <link rel="stylesheet" href="<?php echo SITE_URL, RACINE, STYLE; ?>stylesheet/uielement.css">
         <!--/ Application stylesheet -->
 
         <!-- Theme stylesheet : optional -->
         <!--/ Theme stylesheet : optional -->
 
         <!-- modernizr script -->
-        <script type="text/javascript" src="../plugins/modernizr/js/modernizr.js"></script>
+        <script type="text/javascript" src="<?php echo SITE_URL, RACINE, STYLE; ?>plugins/modernizr/js/modernizr.js"></script>
         <!--/ modernizr script -->
         <!-- END STYLESHEETS -->
     </head>

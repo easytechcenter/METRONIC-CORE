@@ -48,7 +48,7 @@ $li_end = "";
                         <?php
                         if($sql_db == FALSE){
                         ?>
-                        
+
                         <?php
                         }
                         ?>
@@ -68,9 +68,9 @@ $li_end = "";
 
         <!-- START JAVASCRIPT SECTION (Load javascripts at bottom to reduce load time) -->
         <!-- Application and vendor script : mandatory -->
-        <script type="text/javascript" src="../javascript/vendor.js"></script>
-        <script type="text/javascript" src="../javascript/core.js"></script>
-        <script type="text/javascript" src="../javascript/backend/app.js"></script>
+        <script type="text/javascript" src="<?php echo SITE_URL, RACINE, STYLE; ?>js/vendor.js"></script>
+        <script type="text/javascript" src="<?php echo SITE_URL, RACINE, STYLE; ?>js/core.js"></script>
+        <script type="text/javascript" src="<?php echo SITE_URL, RACINE, STYLE; ?>js/backend/app.js"></script>
         <!--/ Application and vendor script : mandatory -->
 
         <!-- Plugins and page level script : optional -->
