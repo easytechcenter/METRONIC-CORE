@@ -121,23 +121,12 @@ LAST UPDATE: 2015/01/05
                                 <?php } ?>
                                 <!--/ Alert message -->
                                 <div class="form-group">
-                                    <select class="form-control" name="lang">
-                                        <option value="0">Select language</option>
-                                        <option value="en">English</option>
-                                        <option value="da">Danish - Dansk</option>
-                                        <option value="nl">Dutch - Nederlands</option>
-                                        <option value="en-gb">English - UK</option>
-                                        <option value="fr">French - français</option>
-                                        <option value="de">German - Deutsch</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
                                     <div class="form-stack has-icon pull-left">
-                                        <input name="login" type="text" class="form-control input-lg" placeholder="Username / email" data-parsley-errors-container="#error-container" data-parsley-error-message="Please fill in your username / email" data-parsley-required>
+                                        <input name="login" type="text" class="form-control input-lg" placeholder="Nom d'utilisateur" data-parsley-errors-container="#error-container" data-parsley-error-message="Please fill in your username / email" data-parsley-required>
                                         <i class="ico-user2 form-control-icon"></i>
                                     </div>
                                     <div class="form-stack has-icon pull-left">
-                                        <input name="pass" type="password" class="form-control input-lg" placeholder="Password" data-parsley-errors-container="#error-container" data-parsley-error-message="Please fill in your password" data-parsley-required>
+                                        <input name="pass" type="password" class="form-control input-lg" placeholder="Mot de passe" data-parsley-errors-container="#error-container" data-parsley-error-message="Please fill in your password" data-parsley-required>
                                         <i class="ico-lock2 form-control-icon"></i>
                                     </div>
                                 </div>
