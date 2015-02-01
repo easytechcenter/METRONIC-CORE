@@ -8,7 +8,7 @@ exit();
 <?php
 include ('db.conf.php');
 include ('define.php');
-include ('error.php')^;
+include ('error.php');
 if(MAINTENANCE == '1'){
     header("Location: maintenance.php");
 }
