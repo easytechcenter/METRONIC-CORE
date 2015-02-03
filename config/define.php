@@ -8,4 +8,5 @@ define("ASSETS", "assets/");
 //definition du logiciel
 define("LOGICIEL", "METRONIC CORE V5");
 
+
  ?>
